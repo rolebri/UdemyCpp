@@ -7,8 +7,8 @@ To see what features are already implemented for the compilers, see [here](https
 | Feature          | GCC  | Clang | MSVC | Apple Clang |
 | ---------------- | ---- | ----- | ---- | ----------- |
 | size_t suffix    | Yes  | Yes   | No   | Yes         |
-| if consteval     | Yes  | Yes   | No   | Part        |
+| if consteval     | Yes  | Yes   | No   | Yes         |
 | string contains  | Yes  | Yes   | Yes  | Yes         |
 | range *_with     | No   | No    | Yes  | No          |
-| view zip         | Yes   | Yes    | Part  | No          |
+| view zip         | Yes  | Part  | Part | No          |
 | ranges to        | No   | No    | Yes  | No          |
