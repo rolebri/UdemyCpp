@@ -49,22 +49,13 @@
     },
     {
       "name": "C/C++ Runner: Debug Session",
-      "type": "cppdbg",
+      "type": "cppvsdbg",
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/08_Objects",
-      "program": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/08_Objects/build/Debug/outDebug",
-      "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
+      "console": "externalTerminal",
+      "cwd": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/07_Algorithms",
+      "program": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/07_Algorithms/build/Release/outRelease"
     }
   ]
 }

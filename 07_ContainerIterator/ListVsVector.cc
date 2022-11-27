@@ -79,7 +79,6 @@ void summing(Container_t &c)
     }
 }
 
-#ifdef USING_VEC
 void indexing(std::vector<std::int32_t> &c)
 {
     auto gen = std::mt19937{0};
@@ -92,7 +91,7 @@ void indexing(std::vector<std::int32_t> &c)
         c[index] = 42;
     }
 }
-#else
+
 void indexing(std::list<std::int32_t> &c)
 {
     std::random_device gen;
@@ -112,9 +111,8 @@ void indexing(std::list<std::int32_t> &c)
         *it = 42;
     }
 }
-#endif
 
-std::int32_t main()
+int main()
 {
     {
         auto total_time = double{0.0};
