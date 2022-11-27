@@ -54,8 +54,8 @@
       "args": [],
       "stopAtEntry": false,
       "console": "externalTerminal",
-      "cwd": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/07_Algorithms",
-      "program": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/07_Algorithms/build/Release/outRelease"
+      "cwd": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/08_STL",
+      "program": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/08_STL/build/Debug/outDebug"
     }
   ]
 }
