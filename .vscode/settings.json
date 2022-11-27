@@ -105,7 +105,12 @@
     "xlocbuf": "cpp",
     "xlocmes": "cpp",
     "xlocmon": "cpp",
-    "xloctime": "cpp"
+    "xloctime": "cpp",
+    "execution": "cpp",
+    "filesystem": "cpp",
+    "queue": "cpp",
+    "xhash": "cpp",
+    "xtree": "cpp"
   },
   "workbench.editorAssociations": {
     "*.md": "vscode.markdown.preview.editor"

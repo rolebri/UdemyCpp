@@ -3,12 +3,12 @@
 
 int main()
 {
-    std::uint32_t length = 4;
-    int *arr = new int[length];
+    const auto length = std::size_t{4};
+    auto arr = new std::int32_t[length];
 
-    for (std::uint32_t i = 0; i < length; i++)
+    for (std::size_t i = 0; i < length; i++)
     {
-        arr[i] = static_cast<int>(i);
+        arr[i] = static_cast<std::int32_t>(i);
         std::cout << arr[i] << std::endl;
     }
 

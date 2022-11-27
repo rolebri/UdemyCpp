@@ -1,6 +1,6 @@
-DEBUG_FLAGS = -g3 -ggdb3 -O0 -std=c++20
+DEBUG_FLAGS = -g3 -O0 -std=c++20
 RELEASE_FLAGS = -DNDEBUG -O3 -std=c++20
-WARNING_FLAGS = -Wall -Wpedantic -Wshadow
+WARNING_FLAGS = -Wall -Wextra -Wpedantic -Wshadow -Wconversion
 SANITIZER_FLAGS = -fsanitize=address
 ANALYZER_FLAGS = -fanalyzer
 
