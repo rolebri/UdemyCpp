@@ -1,15 +1,14 @@
 #include <iostream>
 
-// Variable Name Rules:
 // 1.) Can not start with a number
-// 2.) Can not contain spaces
+// 2.) Can not contain whitespaces
 // 3.) Variable name must be unique
 
 int main()
 {
-    double my_var = 13.37;
+    int my_integer_value;
 
-    my_var = 24.0;
+    my_integer_value = 2;
 
     return 0;
 }
