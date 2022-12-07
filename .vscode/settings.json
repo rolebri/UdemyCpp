@@ -181,7 +181,7 @@
     "**/.vscode",
     "**/.vscode/**"
   ],
-  "C_Cpp.codeAnalysis.clangTidy.enabled": false,
+  "C_Cpp.codeAnalysis.clangTidy.enabled": true,
   "C_Cpp_Runner.useMsvc": true,
   "Workspace_Formatter.excludePattern": [
     "**/build",
