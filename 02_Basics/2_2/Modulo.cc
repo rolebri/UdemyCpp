@@ -1,16 +1,30 @@
+#include <cstdint>
 #include <iostream>
 
 int main()
 {
-    int number = 4;
+    std::uint32_t number;
+    std::cout << "Please enter your guess: ";
+    std::cin >> number;
 
-    if (number % 2 == 0)
+    if ((number >= 0) && (number <= 10))
     {
-        std::cout << "Number is even!" << std::endl;
+        if (number == 4)
+        {
+            std::cout << "You won!" << std::endl;
+        }
+        else if (number % 2 == 0)
+        {
+            std::cout << "You won wooden spoon!" << std::endl;
+        }
+        else
+        {
+            std::cout << "You lost!" << std::endl;
+        }
     }
     else
     {
-        std::cout << "Number is odd!" << std::endl;
+        std::cout << "You entered an invalid number!" << std::endl;
     }
 
     return 0;

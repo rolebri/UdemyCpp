@@ -1,26 +1,18 @@
+#include <cstdint>
 #include <iostream>
+
+// true: 1
+// false: 0
+
+// !true => false
+// !false => true
 
 int main()
 {
-    int number = 12;
+    std::int32_t number = 11;
 
-    bool check1 = number % 2 == 0;
-    bool check2 = number < 10;
-    // true <=> wahr <=> 1
-    // false <=> falsch <=> 0
-
-    if (check1 == true && check2 == true)
-    {
-        std::cout << "Case 1!" << std::endl;
-    }
-    else if (check1 == true || check2 == true)
-    {
-        std::cout << "Case 2!" << std::endl;
-    }
-    else
-    {
-        std::cout << "Else Case!" << std::endl;
-    }
+    bool check = !((number >= 0) && (number <= 10));
+    std::cout << "Check: " << std::boolalpha << check << std::endl;
 
     return 0;
 }
