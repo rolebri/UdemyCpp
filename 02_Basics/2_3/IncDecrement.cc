@@ -1,20 +1,22 @@
-
+#include <cstdint>
 #include <iostream>
 
 int main()
 {
-    for (int i = 2; i < 4; i += 1)
+    for (std::uint32_t i = 0; i < 3; i++)
     {
         std::cout << i << std::endl;
     }
 
-    // Increment i++ <=> i += 1 <=> i = i + 1
-    // Decrement i-- <=> i -= 1 <=> i = i - 1
+    std::uint32_t i = 0;
 
-    for (int i = 2; i < 4; i++)
-    {
-        std::cout << i << std::endl;
-    }
+    i = i + 1;
+    i += 1;
+    i++; // increment
+
+    i = i - 1;
+    i -= 1;
+    i--; // decrement
 
     return 0;
 }

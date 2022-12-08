@@ -1,8 +1,9 @@
+#include <cstdint>
 #include <iostream>
 
 int main()
 {
-    for (int i = 2; i < 10; i += 2)
+    for (std::uint32_t i = 0; i < 3; i += 1)
     {
         std::cout << i << std::endl;
     }
