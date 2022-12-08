@@ -2,27 +2,26 @@
 
 int main()
 {
-    double number1;
-    double number2;
-    double result = 0.0;
+    float my_value1;
+    float my_value2;
 
-    std::cout << "Please enter a number: ";
-    std::cin >> number1;
+    std::cout << "Please enter the first number: ";
+    std::cin >> my_value1;
 
-    std::cout << "Please enter another number: ";
-    std::cin >> number2;
+    std::cout << "Please enter the second number: ";
+    std::cin >> my_value2;
 
-    result = number1 * number2;
-    std::cout << "number1 * number2 = " << result << std::endl;
+    float my_result1 = my_value1 + my_value2;
+    std::cout << "addition: " << my_result1 << std::endl;
 
-    result = number1 + number2;
-    std::cout << "number1 + number2 = " << result << std::endl;
+    float my_result2 = my_value1 - my_value2;
+    std::cout << "subtraction: " << my_result2 << std::endl;
 
-    result = number1 - number2;
-    std::cout << "number1 - number2 = " << result << std::endl;
+    float my_result3 = my_value1 * my_value2;
+    std::cout << "multiplication: " << my_result3 << std::endl;
 
-    result = number1 / number2;
-    std::cout << "number1 / number2 = " << result << std::endl;
+    float my_result4 = my_value1 / my_value2;
+    std::cout << "division: " << my_result4 << std::endl;
 
     return 0;
 }
