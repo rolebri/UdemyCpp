@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <iostream>
 
 // 1.) User-Input: unsigned integer number
@@ -10,8 +11,8 @@ int main()
 {
     bool is_prime = true;
 
-    unsigned int number = 0;
-    std::cout << "Please enter an unsigned int number: ";
+    std::uint32_t number = 0;
+    std::cout << "Please enter an std::uint32_t number: ";
     std::cin >> number;
 
     if (number == 0 || number == 1)
@@ -19,7 +20,7 @@ int main()
         is_prime = false;
     }
 
-    for (unsigned int i = 2; i < number; ++i)
+    for (std::uint32_t i = 2; i < number; ++i)
     {
         if (number % i == 0)
         {

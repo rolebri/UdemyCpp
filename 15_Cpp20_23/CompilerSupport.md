@@ -19,15 +19,16 @@ To see what features are already implemented for the compilers, see [here](https
 
 ## Important C++23 Features
 
-| Feature          | GCC  | Clang | MSVC | Apple Clang |
-| ---------------- | ---- | ----- | ---- | ----------- |
-| size_t suffix    | Yes  | Yes   | No   | Yes         |
-| if consteval     | Yes  | Yes   | No   | Yes         |
-| string contains  | Yes  | Yes   | Yes  | Yes         |
-| range *_with     | No   | No    | Yes  | No          |
-| view zip         | Yes  | Part  | Part | No          |
-| view join        | Yes  | No    | Yes  | No          |
-| ranges to        | No   | No    | Yes  | No          |
-| ranges *_with    | No   | No    | Yes  | No          |
-| format improve   | Yes  | Part  | Yes  | No          |
-| expected         | Yes  | No    | Yes  | No          |
+| Feature             | GCC  | Clang | MSVC | Apple Clang |
+| ------------------- | ---- | ----- | ---- | ----------- |
+| size_t suffix       | Yes  | Yes   | No   | Yes         |
+| if consteval        | Yes  | Yes   | No   | Yes         |
+| string contains     | Yes  | Yes   | Yes  | Yes         |
+| range *_with        | No   | No    | Yes  | No          |
+| view zip            | Yes  | Part  | Part | No          |
+| view join           | Yes  | No    | Yes  | No          |
+| ranges to           | No   | No    | Yes  | No          |
+| ranges *_with       | No   | No    | Yes  | No          |
+| format improve      | Yes  | Part  | Yes  | No          |
+| expected            | Yes  | No    | Yes  | No          |
+| Multi dim subscript | Yes  | No    | Yes  | No          |

@@ -1,4 +1,5 @@
 {
+  "editor.fontSize": 21,
   "C_Cpp_Config.cCompilerPath": "C:/cygwin64/bin/gcc.exe",
   "C_Cpp_Config.cppCompilerPath": "C:/cygwin64/bin/g++.exe",
   "C_Cpp_Config.debuggerPath": "C:/cygwin64/bin/gdb.exe",
