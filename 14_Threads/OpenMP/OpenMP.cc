@@ -26,6 +26,7 @@ Parallel std:   2.111ms
 6: OpenMP:      2.657ms
 8: OpenMP:      2.227ms
 */
+
 namespace
 {
 constexpr static auto NUM_THREADS = std::uint32_t{2};
@@ -112,8 +113,8 @@ T parallel_sum(std::vector<T> &vec)
         }
 
         threads[i] = std::thread(
-            [](auto first, auto last, T &result) {
-                result = std::accumulate(first, last, T{});
+            [](auto first_, auto last_, T &result) {
+                result = std::accumulate(first_, last_, T{});
             },
             first,
             last,

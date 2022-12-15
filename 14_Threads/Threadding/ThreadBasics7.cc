@@ -8,7 +8,7 @@ using namespace ::std::literals;
 
 namespace
 {
-constexpr static auto NUM_THREADS = std::uint32_t{3U};
+constexpr static auto NUM_THREADS = std::uint32_t{1U};
 }
 
 void function(const std::stop_token stop_token, std::int32_t value)

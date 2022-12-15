@@ -13,11 +13,13 @@
 
 /*
 Serial time:      4.569ms
+
 2: Own time:      3.336ms
 4: Own time:      3.071ms
 6: Own time:      3.008ms
 8: Own time:      2.975ms
 */
+
 namespace
 {
 constexpr static auto NUM_THREADS = std::uint32_t{2};
@@ -55,16 +57,10 @@ T serial_sum(std::vector<T> &vec)
     return local_sum;
 }
 
-template <typename It, typename T>
-void sum_slice(It first, It last, T &result)
-{
-    result = std::accumulate(first, last, T{});
-}
-
 template <typename T>
 T parallel_sum(std::vector<T> &vec)
 {
-    T final_sum = 0;
+    auto final_sum = T{};
     std::array<T, NUM_THREADS> local_sums{};
     std::array<std::thread, NUM_THREADS> threads;
 
@@ -81,10 +77,13 @@ T parallel_sum(std::vector<T> &vec)
             last = vec.end();
         }
 
-        threads[i] = std::thread(sum_slice<typename std::vector<T>::iterator, T>,
-                                 first,
-                                 last,
-                                 std::ref(local_sums[i]));
+        threads[i] = std::thread(
+            [](auto first_, auto last_, T &result) {
+                result = std::accumulate(first_, last_, T{});
+            },
+            first,
+            last,
+            std::ref(local_sums[i]));
 
         prev_last = prev_last + slice_size;
     }
