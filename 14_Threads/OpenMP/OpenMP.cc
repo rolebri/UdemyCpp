@@ -2,6 +2,7 @@
 #include <array>
 #include <chrono>
 #include <cstdint>
+#include <execution>
 #include <iostream>
 #include <numeric>
 #include <random>
@@ -12,19 +13,22 @@
 #include "omp.h"
 
 /*
-Serial time:      4.569ms
-2: Own time:      3.336ms
-4: Own time:      3.071ms
-6: Own time:      3.008ms
-8: Own time:      2.975ms
-2: OpenMP time:   2.98ms
-4: OpenMP time:   2.599ms
-6: OpenMP time:   2.473ms
-8: OpenMP time:   2.506ms
+Serial:         4.400ms
+Parallel std:   2.111ms
+
+2: Own:         3.336ms
+4: Own:         2.696ms
+6: Own:         2.561ms
+8: Own:         2.441ms
+
+2: OpenMP:      2.98ms
+4: OpenMP:      2.952ms
+6: OpenMP:      2.657ms
+8: OpenMP:      2.227ms
 */
 namespace
 {
-constexpr static auto NUM_THREADS = std::uint32_t{8};
+constexpr static auto NUM_THREADS = std::uint32_t{2};
 constexpr static auto NUM_RUNS = std::uint32_t{1'000};
 } // namespace
 
@@ -65,7 +69,7 @@ T parallel_sum_omp(std::vector<T> &vec)
     auto final_sum = T{};
     auto local_sum = T{};
 
-    std::int32_t i = 0;
+    auto i = std::int32_t{0};
     const auto n = static_cast<std::int32_t>(vec.size());
 
 #pragma omp parallel for reduction(+ : local_sum) num_threads(NUM_THREADS)
@@ -81,10 +85,10 @@ T parallel_sum_omp(std::vector<T> &vec)
     return final_sum;
 }
 
-template <typename It, typename T>
-void sum_slice(It first, It last, T &result)
+template <typename T>
+T parallel_sum_std(std::vector<T> &vec)
 {
-    result = std::accumulate(first, last, T{});
+    return std::reduce(std::execution::par_unseq, vec.begin(), vec.end(), T{});
 }
 
 template <typename T>
@@ -107,10 +111,13 @@ T parallel_sum(std::vector<T> &vec)
             last = vec.end();
         }
 
-        threads[i] = std::thread(sum_slice<typename std::vector<T>::iterator, T>,
-                                 first,
-                                 last,
-                                 std::ref(local_sums[i]));
+        threads[i] = std::thread(
+            [](auto first, auto last, T &result) {
+                result = std::accumulate(first, last, T{});
+            },
+            first,
+            last,
+            std::ref(local_sums[i]));
 
         prev_last = prev_last + slice_size;
     }
@@ -136,14 +143,29 @@ int main()
     auto time = 0.0;
     volatile std::int32_t sum = 0;
 
+    std::cout << "\n\nUsing " << NUM_THREADS << " Threads\n";
+
     {
-        for (std::uint32_t i = 0; i < NUM_RUNS / 20; ++i)
+        for (std::uint32_t i = 0; i < 20; ++i)
         {
             const auto t = cpptiming::Timer{};
             sum = serial_sum(my_vector);
             time += t.elapsed_time<cpptiming::millisecs, double>();
         }
-        std::cout << "Mean Serial: " << time / (NUM_RUNS / 20) << "ms sum: " << sum << '\n';
+        std::cout << "Serial: " << time / 20 << "ms sum: " << sum
+                  << '\n';
+        time = 0.0;
+    }
+
+    {
+        for (std::uint32_t i = 0; i < NUM_RUNS; ++i)
+        {
+            const auto t = cpptiming::Timer{};
+            sum = parallel_sum_std(my_vector);
+            time += t.elapsed_time<cpptiming::millisecs, double>();
+        }
+        std::cout << "Parallel Std: " << time / NUM_RUNS << "ms sum: " << sum
+                  << '\n';
         time = 0.0;
     }
 
@@ -154,7 +176,7 @@ int main()
             sum = parallel_sum(my_vector);
             time += t.elapsed_time<cpptiming::millisecs, double>();
         }
-        std::cout << "Own MT: " << time / NUM_RUNS << "ms sum: " << sum << '\n';
+        std::cout << "Parallel: " << time / NUM_RUNS << "ms sum: " << sum << '\n';
         time = 0.0;
     }
 
@@ -165,7 +187,8 @@ int main()
             sum = parallel_sum_omp(my_vector);
             time += t.elapsed_time<cpptiming::millisecs, double>();
         }
-        std::cout << "Mean OpenMP: " << time / NUM_RUNS << "ms sum: " << sum << '\n';
+        std::cout << "Parallel OpenMP: " << time / NUM_RUNS << "ms sum: " << sum
+                  << '\n';
     }
 
     return 0;

@@ -111,7 +111,10 @@
     "future": "cpp",
     "list": "cpp",
     "unordered_map": "cpp",
-    "xhash": "cpp"
+    "xhash": "cpp",
+    "filesystem": "cpp",
+    "fstream": "cpp",
+    "valarray": "cpp"
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
