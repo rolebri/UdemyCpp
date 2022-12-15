@@ -1,66 +1,63 @@
 #include <array>
 #include <cstdint>
 #include <iostream>
-#include <mutex>
 #include <numeric>
 #include <thread>
+#include <mutex>
 
 #include "Timer.h"
 
-constexpr std::uint32_t NUM_THREADS = 3;
-constexpr std::uint32_t NUM_INCREMENTS = 100'000;
+namespace
+{
+constexpr static auto NUM_THREADS = std::uint32_t{3U};
+constexpr static auto NUM_INCREMENTS = std::uint32_t{100'000};
 
-std::mutex mutex;
-std::int32_t global_counter = 0;
+auto GLOBAL_COUNTER = std::uint32_t{0};
+auto MUTEX_COUNTER = std::mutex{};
+} // namespace
 
 void function(const std::int32_t input, std::int32_t &output)
 {
     output = input * 2;
 
-    std::int32_t local_counter = 0;
-
     for (std::uint32_t i = 0; i < NUM_INCREMENTS; ++i)
     {
-        ++local_counter;
+        auto guard = std::lock_guard<std::mutex>(MUTEX_COUNTER);
+        ++GLOBAL_COUNTER;
     }
-
-    std::lock_guard<std::mutex> guard(mutex);
-
-    global_counter += local_counter;
 }
 
 int main()
 {
     std::array<std::thread, NUM_THREADS> threads;
-    std::array<std::int32_t, NUM_THREADS> inputs{};
-    std::array<std::int32_t, NUM_THREADS> outputs{};
 
+    auto inputs = std::array<std::int32_t, NUM_THREADS>{};
+    auto outputs = std::array<std::int32_t, NUM_THREADS>{};
     std::iota(inputs.begin(), inputs.end(), 0);
-    std::fill(outputs.begin(), outputs.end(), 0);
 
-    cpptiming::Timer timer;
+    auto timer = cpptiming::Timer{};
 
     for (std::uint32_t i = 0; i < NUM_THREADS; ++i)
     {
         threads[i] = std::thread(function, inputs[i], std::ref(outputs[i]));
     }
 
-    // ...
+    // ....
 
     for (std::uint32_t i = 0; i < NUM_THREADS; ++i)
     {
         threads[i].join();
     }
 
-    auto time_us = timer.elapsed_time<cpptiming::microsecs, double>();
-    std::cout << "Time in us: " << time_us << '\n';
+    const auto time_us = timer.elapsed_time<cpptiming::microsecs, double>();
+    std::cout << "Time: " << time_us << '\n';
 
     for (std::uint32_t i = 0; i < NUM_THREADS; ++i)
     {
-        std::cout << "Outputs[" << i << "] = " << outputs[i] << '\n';
+        std::cout << "Input: " << inputs[i] << " and Output: " << outputs[i] << '\n';
     }
 
-    std::cout << "Global counter = " << global_counter << '\n';
+    std::cout << "GLOBAL_COUNTER: " << GLOBAL_COUNTER << '\n';
 
     return 0;
 }

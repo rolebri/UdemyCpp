@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "console": "externalTerminal",
-      "cwd": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/14_Threads/_Exercise/Exercise",
-      "program": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/14_Threads/_Exercise/Exercise/build/Debug/outDebug"
+      "cwd": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/14_Threads/Threadding",
+      "program": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/14_Threads/Threadding/build/Release/outRelease"
     }
   ]
 }

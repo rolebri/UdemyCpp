@@ -3,19 +3,18 @@
 
 void function()
 {
-    const auto id = std::this_thread::get_id();
+    const auto thread_id = std::this_thread::get_id();
+    std::cout << "Thread ID: " << thread_id << '\n';
 
-    std::cout << "ID from *function*: " << id << '\n';
+    std::cout << "Working\n";
 }
 
 int main()
 {
-    const auto id = std::this_thread::get_id();
-    std::cout << "ID from *main*: " << id << '\n';
+    const auto main_id = std::this_thread::get_id();
+    std::cout << "Main Thread ID: " << main_id << '\n';
 
-    std::thread t1(function);
-
-    // ...
+    auto t1 = std::thread(function);
 
     if (t1.joinable())
     {
