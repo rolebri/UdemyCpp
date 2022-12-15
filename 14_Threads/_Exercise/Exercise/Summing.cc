@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <array>
 #include <cassert>
 #include <chrono>
 #include <cstdint>
@@ -10,18 +11,29 @@
 
 #include "Timer.h"
 
-constexpr std::uint32_t NUM_THREADS = 2;
-constexpr std::uint32_t NUM_RUNS = 1'000;
+/*
+Serial time:      4.569ms
+2: Own time:      3.336ms
+4: Own time:      3.071ms
+6: Own time:      3.008ms
+8: Own time:      2.975ms
+*/
+namespace
+{
+constexpr static auto NUM_THREADS = std::uint32_t{2};
+constexpr static auto NUM_RUNS = std::uint32_t{1'000};
+} // namespace
 
 template <typename T>
 void random_vector(std::vector<T> &vec)
 {
-    constexpr std::int32_t seed = 42;
-    constexpr std::int32_t lower_bound = -10;
-    constexpr std::int32_t upper_bound = 10;
+    constexpr static auto seed = std::int32_t{42};
+    constexpr static auto lower_bound = std::int32_t{-10};
+    constexpr static auto upper_bound = std::int32_t{10};
 
-    std::mt19937 random_generator(seed);
-    std::uniform_int_distribution<T> random_distribution(lower_bound, upper_bound);
+    static auto random_generator = std::mt19937{seed};
+    static auto random_distribution =
+        std::uniform_int_distribution<T>(lower_bound, upper_bound);
 
     for (auto &val : vec)
     {
@@ -32,7 +44,7 @@ void random_vector(std::vector<T> &vec)
 template <typename T>
 T serial_sum(std::vector<T> &vec)
 {
-    T local_sum = 0;
+    auto local_sum = T{};
     const auto n = static_cast<std::uint32_t>(vec.size());
 
     for (std::uint32_t i = 0; i != n; ++i)
@@ -43,20 +55,49 @@ T serial_sum(std::vector<T> &vec)
     return local_sum;
 }
 
+template <typename It, typename T>
+void sum_slice(It first, It last, T &result)
+{
+    result = std::accumulate(first, last, T{});
+}
+
+template <typename T>
+T parallel_sum(std::vector<T> &vec)
+{
+    T final_sum = 0;
+
+
+    return final_sum;
+}
+
 int main()
 {
-    std::vector<std::int32_t> my_vector(30'000'000, 0);
+    static auto my_vector = std::vector<std::int32_t>(30'000'000, 0);
     random_vector(my_vector);
 
-    auto time1 = 0.0;
-    volatile std::int32_t sum1 = 0;
-    for (std::uint32_t i = 0; i < NUM_RUNS; ++i)
+    auto time = 0.0;
+    volatile std::int32_t sum = 0;
+
     {
-        cpptiming::Timer t1;
-        sum1 = serial_sum(my_vector);
-        time1 += t1.elapsed_time<cpptiming::millisecs, double>();
+        for (std::uint32_t i = 0; i < NUM_RUNS; ++i)
+        {
+            const auto t = cpptiming::Timer{};
+            sum = serial_sum(my_vector);
+            time += t.elapsed_time<cpptiming::millisecs, double>();
+        }
+        std::cout << "Mean Serial: " << time / NUM_RUNS << "ms sum: " << sum << '\n';
+        time = 0.0;
     }
-    std::cout << "Mean Serial: " << time1 / NUM_RUNS << "ms sum: " << sum1 << '\n';
+
+    {
+        for (std::uint32_t i = 0; i < NUM_RUNS; ++i)
+        {
+            const auto t = cpptiming::Timer{};
+            sum = parallel_sum(my_vector);
+            time += t.elapsed_time<cpptiming::millisecs, double>();
+        }
+        std::cout << "Own MT: " << time / NUM_RUNS << "ms sum: " << sum << '\n';
+    }
 
     return 0;
 }

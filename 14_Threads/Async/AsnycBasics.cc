@@ -1,6 +1,5 @@
 #include <future>
 #include <iostream>
-#include <thread>
 
 int function(const int input)
 {
