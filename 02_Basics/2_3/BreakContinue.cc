@@ -3,12 +3,12 @@
 
 int main()
 {
-    std::int32_t sum = 0;
+    std::int32_t sum = 0U;
 
     do
     {
         std::cout << "\nCurrent sum: " << sum << " Enter the next value: ";
-        std::int32_t input;
+        std::int32_t input = 0U;
         std::cin >> input;
 
         if (input < 0)

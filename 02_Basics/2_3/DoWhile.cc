@@ -1,17 +1,18 @@
+#include <cstdint>
 #include <iostream>
 
 int main()
 {
-    int sum = 10;
+    std::int32_t sum = 10U;
 
     do
     {
-        std::cout << "\nCurrent sum: " << sum << " Enter the next value: ";
-        int input;
+        std::cout << "\nCurrent Sum: " << sum << " Enter the next value: ";
+        std::int32_t input = 0U;
         std::cin >> input;
 
         sum += input;
-    } while (sum < 10);
+    } while (sum < 10U);
 
     return 0;
 }
