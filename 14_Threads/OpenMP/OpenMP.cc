@@ -31,6 +31,7 @@ namespace
 {
 constexpr static auto NUM_THREADS = std::uint32_t{2};
 constexpr static auto NUM_RUNS = std::uint32_t{1'000};
+constexpr static auto NUM_ELEMENTS = std::uint32_t{30'000'000};
 } // namespace
 
 template <typename T>
@@ -53,15 +54,7 @@ void random_vector(std::vector<T> &vec)
 template <typename T>
 T serial_sum(std::vector<T> &vec)
 {
-    auto local_sum = T{};
-    const auto n = static_cast<std::uint32_t>(vec.size());
-
-    for (std::uint32_t i = 0; i != n; ++i)
-    {
-        local_sum = local_sum + vec[i];
-    }
-
-    return local_sum;
+    return std::accumulate(vec.begin(), vec.end(), T{});
 }
 
 template <typename T>
@@ -76,7 +69,7 @@ T parallel_sum_omp(std::vector<T> &vec)
 #pragma omp parallel for reduction(+ : local_sum) num_threads(NUM_THREADS)
     for (i = 0; i < n; ++i)
     {
-        local_sum = local_sum + vec[i];
+        local_sum = local_sum + vec[static_cast<size_t>(i)];
     }
 #pragma omp critical
     {
@@ -89,14 +82,14 @@ T parallel_sum_omp(std::vector<T> &vec)
 template <typename T>
 T parallel_sum_std(std::vector<T> &vec)
 {
-    return std::reduce(std::execution::par_unseq, vec.begin(), vec.end(), T{});
+    return std::reduce(std::execution::par, vec.begin(), vec.end());
 }
 
 template <typename T>
 T parallel_sum(std::vector<T> &vec)
 {
     auto final_sum = T{};
-    std::array<T, NUM_THREADS> local_sums{};
+    auto local_sums = std::array<T, NUM_THREADS>{};
     std::array<std::thread, NUM_THREADS> threads;
 
     const auto slice_size = vec.size() / NUM_THREADS;
@@ -138,11 +131,11 @@ T parallel_sum(std::vector<T> &vec)
 
 int main()
 {
-    static auto my_vector = std::vector<std::int32_t>(30'000'000, 0);
+    static auto my_vector = std::vector<std::int32_t>(NUM_ELEMENTS, 0);
     random_vector(my_vector);
 
     auto time = 0.0;
-    volatile std::int32_t sum = 0;
+    volatile auto sum = std::int32_t{0};
 
     std::cout << "\n\nUsing " << NUM_THREADS << " Threads\n";
 
@@ -153,8 +146,7 @@ int main()
             sum = serial_sum(my_vector);
             time += t.elapsed_time<cpptiming::millisecs, double>();
         }
-        std::cout << "Serial: " << time / 20 << "ms sum: " << sum
-                  << '\n';
+        std::cout << "Serial: " << time / 20 << "ms sum: " << sum << '\n';
         time = 0.0;
     }
 
@@ -177,7 +169,8 @@ int main()
             sum = parallel_sum(my_vector);
             time += t.elapsed_time<cpptiming::millisecs, double>();
         }
-        std::cout << "Parallel: " << time / NUM_RUNS << "ms sum: " << sum << '\n';
+        std::cout << "Parallel: " << time / NUM_RUNS << "ms sum: " << sum
+                  << '\n';
         time = 0.0;
     }
 
