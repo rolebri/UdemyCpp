@@ -7,7 +7,7 @@
 
 int user_input()
 {
-    int number;
+    std::int32_t number = 0;
     std::cout << "Please enter a number: ";
     std::cin >> number;
 

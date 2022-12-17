@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdint>
 
 #include "Game.h"
 
@@ -10,7 +11,7 @@ void game()
 
     do
     {
-        int number;
+        std::int32_t number = 0;
         std::cout << "Please enter your number: ";
         std::cin >> number;
 

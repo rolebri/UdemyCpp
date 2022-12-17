@@ -1,38 +1,25 @@
 #include <iostream>
+#include <cstdint>
 
 double max(double a, double b)
 {
-    if (a > b)
-    {
-        return a;
-    }
-    else
-    {
-        return b;
-    }
+    return a > b ? a : b;
 }
 
-int max(int a, int b)
+std::int32_t max(std::int32_t a, std::int32_t b)
 {
-    if (a > b)
-    {
-        return a;
-    }
-
-    return b;
+    return a > b ? a : b;
 }
 
 int main()
 {
-    int a = 2;
-    int b = 3;
+    double da = 1.0;
+    double db = 3.0;
+    std::cout << max(da, db) << '\n';
 
-    std::cout << max(a, b) << std::endl;
-
-    double c = 2;
-    double d = 3;
-
-    std::cout << max(c, d) << std::endl;
+    std::int32_t ia = 1;
+    std::int32_t ib = 3;
+    std::cout << max(ia, ib) << '\n';
 
     return 0;
 }
