@@ -13,7 +13,7 @@ int main()
          current_number_of_attempts < max_number_of_attempts;
          current_number_of_attempts++)
     {
-        std::uint32_t number;
+        std::uint32_t number = 0U;
         std::cout << "Please enter your guess: ";
         std::cin >> number;
 

@@ -11,7 +11,7 @@ int main()
 
     do
     {
-        std::uint32_t number;
+        std::uint32_t number = 0U;
         std::cout << "Please enter your guess: ";
         std::cin >> number;
 

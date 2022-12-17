@@ -12,7 +12,7 @@ int main()
     bool is_prime = true;
 
     std::uint32_t number = 0;
-    std::cout << "Please enter an std::uint32_t number: ";
+    std::cout << "Please enter an uint number: ";
     std::cin >> number;
 
     if (number == 0 || number == 1)
@@ -28,8 +28,8 @@ int main()
         }
     }
 
-    std::cout << "The number " << number << " is a prime number? " << std::boolalpha
-              << is_prime << std::endl;
+    std::cout << "The number " << number << " is a prime number? "
+              << std::boolalpha << is_prime << std::endl;
 
     return 0;
 }
