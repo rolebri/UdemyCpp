@@ -15,13 +15,18 @@ bool is_even(std::int32_t number)
     return number % 2 == 0;
 }
 
+void print_boolean_value(bool value)
+{
+    std::cout << std::boolalpha << value;
+}
+
 int main()
 {
     std::int32_t user_number = user_input();
     std::cout << user_number << '\n';
 
     bool result = is_even(user_number);
-    std::cout << "Is Even? " << std::boolalpha << result << '\n';
+    print_boolean_value(result);
 
     return 0;
 }
