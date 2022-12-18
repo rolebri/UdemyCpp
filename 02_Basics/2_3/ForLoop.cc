@@ -3,7 +3,7 @@
 
 int main()
 {
-    for (std::uint32_t i = 0; i < 3; i += 1)
+    for (std::uint32_t i = 0; i < 5; i++)
     {
         std::cout << i << std::endl;
     }
