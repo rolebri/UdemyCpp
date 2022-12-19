@@ -1,29 +1,31 @@
 #include <iostream>
 
-// Call by Value (local copy)
-void f(int *p_function)
+void f1(int v)
 {
-    std::cout << "(F):  p_function = " << p_function << std::endl;
-    std::cout << "(F): &p_function = " << &p_function << std::endl;
+    std::cout << "f1: " << v << std::endl;
+    std::cout << &v << std::endl;
 }
 
-// Call by Reference
-void g(int *&p_function)
+void f2(int *const v)
 {
-    std::cout << "(G):  p_function = " << p_function << std::endl;
-    std::cout << "(G): &p_function = " << &p_function << std::endl;
+    std::cout << "f2: " << *v << std::endl;
+    std::cout << v << std::endl;
+}
+
+void f3(int &v)
+{
+    std::cout << "f3: " << v << std::endl;
+    std::cout << &v << std::endl;
 }
 
 int main()
 {
-    int *p_number = new int{4};
+    int a = 2;
+    std::cout << &a << std::endl;
 
-    std::cout << "(MAIN):  p_number = " << p_number << std::endl;
-    std::cout << "(MAIN): &p_number = " << &p_number << std::endl;
-
-    f(p_number);
-
-    g(p_number);
+    f1(a);
+    f2(&a);
+    f3(a);
 
     return 0;
 }

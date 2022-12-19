@@ -1,38 +1,45 @@
 #include <iostream>
 
-// CallByValue
-void f1(int number)
+void copy(int v) // copy - Input but modifiable
 {
-    number++;
+    v *= 2;
+    std::cout << "f1: " << v << std::endl;
+    std::cout << &v << std::endl;
 }
 
-// CallByReference
-void f2(int &number)
+void copy_const(const int v) // const - Input only because of const
 {
-    number++;
+    std::cout << "f1: " << v << std::endl;
+    std::cout << &v << std::endl;
 }
 
-// CallByValue
-int f3(int number)
+void reference_input(const int &v) // Input only because of const
 {
-    number++;
+    std::cout << "f3: " << v << std::endl;
+    std::cout << &v << std::endl;
+}
 
-    return number;
+void reference_in_output(int &v) // Input and Output
+{
+    v = v * 2; // In and Output
+    v = 2; // Output only
+    std::cout << "f3: " << v << std::endl;
+    std::cout << &v << std::endl;
 }
 
 int main()
 {
-    int num = 0;
-    std::cout << num << std::endl;
+    int a = 2;
+    std::cout << a << std::endl;
+    std::cout << &a << std::endl;
 
-    f1(num);
-    std::cout << num << std::endl;
+    copy(a);
+    copy_const(a);
+    reference_input(a);
+    reference_in_output(a);
 
-    f2(num);
-    std::cout << num << std::endl;
-
-    num = f3(num);
-    std::cout << num << std::endl;
+    std::cout << a << std::endl;
+    std::cout << &a << std::endl;
 
     return 0;
 }
