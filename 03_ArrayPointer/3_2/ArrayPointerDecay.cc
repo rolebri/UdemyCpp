@@ -1,23 +1,20 @@
 #include <cstdint>
 #include <iostream>
 
-// array to pointer decay
-void print_array(int *array, const std::uint32_t length)
+void print_array(const std::int32_t *arr, const std::size_t len)
 {
-    for (std::uint32_t i = 0; i < length; ++i)
+    for (std::size_t i = 0; i < len; i++)
     {
-        std::cout << array[i] << std::endl;
+        std::cout << arr[i] << std::endl;
     }
 }
 
 int main()
 {
-    int arr1[]{1, 2, 3};
-    print_array(arr1, 3);
+    constexpr std::size_t arr_len = 4U;
+    const std::int32_t values[arr_len]{1, 2, 3, 4};
 
-    auto *arr2 = new int[3];
-    arr2[0] = 1;
-    arr2[1] = 2;
-    arr2[2] = 3;
-    print_array(arr2, 3);
+    print_array(values, arr_len);
+
+    return 0;
 }
