@@ -7,15 +7,16 @@ void f(int v)
 
 int main()
 {
-    int a = 2;
-    const int b = 2;
-    int &c = a;
-    const int &d = b;
+    int a = 2;  // lvalue
+    const int b = 2; // const lvalue
+    int &c = a; // lvalue reference
+    const int &d = b; // const lvalue reference
 
     f(a);
     f(b);
     f(c);
     f(d);
+    f(2); // rvalue
 
     return 0;
 }
