@@ -20,11 +20,12 @@ int main()
         is_prime = false;
     }
 
-    for (std::uint32_t i = 2; i < number; ++i)
+    for (std::uint32_t i = 2; i < number; i++)
     {
         if (number % i == 0)
         {
             is_prime = false;
+            break;
         }
     }
 
