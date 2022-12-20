@@ -6,10 +6,10 @@
 int main()
 {
     // Exercise 1
-    std::size_t array_length = 100;
-    double sum = 0.0;
+    auto array_length = std::size_t{100};
+    auto sum = 0.0;
 
-    double *array1 = new double[array_length];
+    auto *array1 = new double[array_length];
 
     for (std::size_t i = 0; i < array_length; i++)
     {
@@ -18,10 +18,12 @@ int main()
 
     sum = array_sum(array1, array_length);
     std::cout << "(Exercise 1) Array Sum = " << sum << std::endl;
+    delete[] array1;
+    array1 = nullptr;
 
     // Exercise 2
-    std::size_t input_array_length = 0;
-    int input_array_value = 0;
+    auto input_array_length = std::size_t{0};
+    auto input_array_value = std::int32_t{0};
 
     std::cout << std::endl << "Enter the array length: " << std::endl;
     std::cin >> input_array_length;
@@ -36,8 +38,8 @@ int main()
         std::cout << array2[i] << std::endl;
     }
 
-    delete[] array1;
     delete[] array2;
+    array2 = nullptr;
 
     return 0;
 }
