@@ -4,11 +4,13 @@
 #include "exercise2.h"
 
 // Exercise 1
-void push_back(int *&input_array, const std::uint32_t &size, const int &value)
+void push_back(std::int32_t *&input_array,
+               const std::size_t size,
+               const std::int32_t value)
 {
-    int *temp = new int[size + 1];
+    auto *temp = new int[size + 1];
 
-    for (std::uint32_t i = 0; i < size; i++)
+    for (std::size_t i = 0; i < size; i++)
     {
         temp[i] = input_array[i];
     }
@@ -21,9 +23,9 @@ void push_back(int *&input_array, const std::uint32_t &size, const int &value)
 }
 
 // Exercise 2
-void pop_back(int *&input_array, const std::uint32_t &size)
+void pop_back(std::int32_t *&input_array, const std::size_t size)
 {
-    int *temp = new int[size - 1];
+    auto *temp = new int[size - 1];
 
     for (int i = 0; i < size - 1; i++)
     {

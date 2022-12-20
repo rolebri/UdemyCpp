@@ -6,15 +6,15 @@
 // int main()
 int main()
 {
-    std::uint32_t size = 3;
-    int *my_data = new int[size];
+    auto size = std::size_t{3};
+    auto *my_data = new std::int32_t[size];
 
     my_data[0] = 0;
     my_data[1] = 1;
     my_data[2] = 2; // int main()
 
     std::cout << "Start-values of the array: " << std::endl;
-    for (std::uint32_t i = 0; i < size; i++)
+    for (std::size_t i = 0; i < size; i++)
     {
         std::cout << my_data[i] << std::endl;
     }
@@ -25,7 +25,7 @@ int main()
     size++;
 
     std::cout << "Append value 12 at the end: " << std::endl;
-    for (std::uint32_t i = 0; i < size; i++)
+    for (std::size_t i = 0; i < size; i++)
     {
         std::cout << my_data[i] << std::endl;
     }
@@ -35,7 +35,7 @@ int main()
     size--;
 
     std::cout << "Remove the last value: " << std::endl;
-    for (std::uint32_t i = 0; i < size; i++)
+    for (std::size_t i = 0; i < size; i++)
     {
         std::cout << my_data[i] << std::endl;
     }
