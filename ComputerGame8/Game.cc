@@ -5,18 +5,22 @@
 
 #include "Game.h"
 
-std::int32_t Game::random_int(const std::int32_t lower, const std::int32_t upper)
+std::int32_t Game::random_int(const std::int32_t lower,
+                              const std::int32_t upper)
 {
     static auto gen = std::random_device{};
-    static auto dist = std::uniform_int_distribution<std::int32_t>(lower, upper);
+    static auto dist =
+        std::uniform_int_distribution<std::int32_t>(lower, upper);
 
     return dist(gen);
 }
 
-std::uint32_t Game::random_uint(const std::uint32_t lower, const std::uint32_t upper)
+std::uint32_t Game::random_uint(const std::uint32_t lower,
+                                const std::uint32_t upper)
 {
     static auto gen = std::random_device{};
-    static auto dist = std::uniform_int_distribution<std::uint32_t>(lower, upper);
+    static auto dist =
+        std::uniform_int_distribution<std::uint32_t>(lower, upper);
 
     return dist(gen);
 }
@@ -62,7 +66,8 @@ void Game::print_game_state()
             {
                 game_state[i][j] = 'P';
             }
-            else if ((i == GOAL.x && j == GOAL.y) || (i == START.x && j == START.y))
+            else if ((i == GOAL.x && j == GOAL.y) ||
+                     (i == START.x && j == START.y))
             {
                 game_state[i][j] = '|';
             }
@@ -120,7 +125,8 @@ void Game::execute_move(const ConsoleInput move)
             player.x++;
         break;
     }
-    case ConsoleInput::INVALID: [[fallthrough]];
+    case ConsoleInput::INVALID:
+        [[fallthrough]];
     default:
     {
         std::cout << "Unrecognized move!\n";

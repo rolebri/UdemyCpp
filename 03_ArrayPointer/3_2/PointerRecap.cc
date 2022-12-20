@@ -1,7 +1,7 @@
 #include <cstdint>
 #include <iostream>
 
-double array_sum(const double *p_array, const std::uint32_t &length)
+double array_sum(const double *p_array, const std::size_t length)
 {
     double sum = 0.0;
 

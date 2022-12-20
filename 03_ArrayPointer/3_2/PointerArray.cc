@@ -3,25 +3,25 @@
 
 int main()
 {
-    std::uint32_t array_size = 10;
+    auto array_size = std::size_t{10};
 
-    // Heap allocation
-    int *p = new int[array_size];
+    // Heap Allocation
+    auto *arr = new std::int32_t[array_size];
 
-    for (std::uint32_t i = 0; i < array_size; ++i)
+    for (std::size_t i = 0; i < array_size; i++)
     {
-        p[i] = i;
+        arr[i] = i;
     }
 
-    // .....
+    // ...
 
-    for (std::uint32_t i = 0; i < array_size; ++i)
+    for (std::size_t i = 0; i < array_size; i++)
     {
-        std::cout << p[i] << std::endl;
+        std::cout << arr[i] << std::endl;
     }
 
-    // Heap de-allocation
-    delete[] p;
+    // Heap De-Allocation
+    delete[] arr;
 
     return 0;
 }

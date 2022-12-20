@@ -13,7 +13,7 @@ Erstellt zunächst ein Double Pointer Array mit 100 Elementen, deren Wert die Za
 Schreibt dann eine Funktion,
 
 ```cpp
-double array_sum(double *p_array, const std::uint32_t &length)
+double array_sum(double *p_array, const std::size_t length)
 ```
 
 die ein Pointer Array vom Typ double entgegennimmt (1. Argument), die Länge des Arrays entgegennimmt (2. Argument) und die Summe des Arrays berechnet und zurückgibt.
@@ -23,10 +23,9 @@ die ein Pointer Array vom Typ double entgegennimmt (1. Argument), die Länge des
 Das heißt bei dem Array mit 100 Elementen würde folgende Summe heraus kommen:
 
 ```cpp
-double *d;
-d = new double[100];
+auto *d = new double[100];
 // Hier Array-Werte init.
-double sum = array_sum(d, 100);
+auto sum = array_sum(d, 100);
 std::cout << sum << std::endl; // Ergebnis ist: 4950
 ```
 
@@ -35,7 +34,7 @@ std::cout << sum << std::endl; // Ergebnis ist: 4950
 Schreibt eine Funktion
 
 ```cpp
-int* array_constructor(const int &value, const std::uint32_t &length)
+std::int32_t* array_constructor(const std::int32_t value, const std::size_t length)
 ```
 
 die ein Pointer Array vom Typ int erstellt und zurückgibt.  
@@ -45,7 +44,7 @@ Dabei ist zu beachten, dass die Länge des Arrays und welcher Wert an jedem Ind
 
 ```cpp
 // value: 5, length: 3
-int* array = array_constructor(5, 3)
+auto* array = array_constructor(5, 3)
 // array = { 5, 5, 5}
 ```
 

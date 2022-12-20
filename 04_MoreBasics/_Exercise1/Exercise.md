@@ -11,8 +11,8 @@ Willkommen bei der nächsten Programmier-Übung in diesem Kurs.
 Implementiert folgende Funktionen:
 
 ```cpp
-double mean_array_value(int *array, const std::uint32_t &length);
-double mean_array_value(double *array, const std::uint32_t &length);
+double mean_array_value(int *array, const std::size_t length);
+double mean_array_value(double *array, const std::size_t length);
 ```
 
 Die erste Funktion soll den Mittelwert (Mean) des Int-Arrays berechnen.  

@@ -3,7 +3,8 @@
 #include <cstdint>
 
 // Exercise 1
-double array_sum(const double *p_array, const std::uint32_t &length);
+double array_sum(const double *p_array, const std::size_t length);
 
 // Exercise 2
-int *array_constructor(const int &value, const std::uint32_t &length);
+std::int32_t *array_constructor(const std::int32_t &value,
+                                const std::size_t length);
