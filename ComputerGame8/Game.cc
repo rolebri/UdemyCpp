@@ -120,7 +120,7 @@ void Game::execute_move(const ConsoleInput move)
             player.x++;
         break;
     }
-    case ConsoleInput::INVALID:
+    case ConsoleInput::INVALID: [[fallthrough]];
     default:
     {
         std::cout << "Unrecognized move!\n";

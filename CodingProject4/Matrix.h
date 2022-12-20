@@ -22,8 +22,8 @@ public:
     using MatrixDataType = std::vector<std::vector<T>>;
 
     Matrix() = delete;
-    Matrix(std::size_t rows, std::size_t cols);
-    Matrix(std::size_t rows, std::size_t cols, const T &value);
+    Matrix(const std::size_t rows, const std::size_t cols);
+    Matrix(const std::size_t rows, const std::size_t cols, const T &value);
     ~Matrix() noexcept = default;
 
     Matrix(const Matrix &other) = default;
@@ -31,21 +31,21 @@ public:
     Matrix(Matrix &&other) noexcept = default;
     Matrix &operator=(Matrix &&other) noexcept = default;
 
-    Matrix operator+(const Matrix &rhs);
-    Matrix &operator+=(const Matrix &rhs);
-    Matrix operator-(const Matrix &rhs);
-    Matrix &operator-=(const Matrix &rhs);
-    Matrix operator*(const T &scalar);
-    Matrix &operator*=(const T &scalar);
-    Matrix operator/(const T &scalar);
-    Matrix &operator/=(const T &scalar);
-    Matrix operator*(const Matrix &rhs);
-    Matrix &operator*=(const Matrix &rhs);
+    [[nodiscard]] Matrix operator+(const Matrix &rhs);
+    [[nodiscard]] Matrix &operator+=(const Matrix &rhs);
+    [[nodiscard]] Matrix operator-(const Matrix &rhs);
+    [[nodiscard]] Matrix &operator-=(const Matrix &rhs);
+    [[nodiscard]] Matrix operator*(const T &scalar);
+    [[nodiscard]] Matrix &operator*=(const T &scalar);
+    [[nodiscard]] Matrix operator/(const T &scalar);
+    [[nodiscard]] Matrix &operator/=(const T &scalar);
+    [[nodiscard]] Matrix operator*(const Matrix &rhs);
+    [[nodiscard]] Matrix &operator*=(const Matrix &rhs);
+
+    [[nodiscard]] std::size_t num_rows() const;
+    [[nodiscard]] std::size_t num_cols() const;
 
     void print_matrix() const;
-
-    std::size_t num_rows() const;
-    std::size_t num_cols() const;
 
 private:
     std::size_t m_rows;
@@ -54,13 +54,15 @@ private:
 };
 
 template <typename T>
-Matrix<T>::Matrix(std::size_t rows, std::size_t cols)
+Matrix<T>::Matrix(const std::size_t rows, const std::size_t cols)
     : m_rows(rows), m_cols(cols), m_data(m_rows, std::vector<T>(m_cols, 0))
 {
 }
 
 template <typename T>
-Matrix<T>::Matrix(std::size_t rows, std::size_t cols, const T &value)
+Matrix<T>::Matrix(const std::size_t rows,
+                  const std::size_t cols,
+                  const T &value)
     : m_rows(rows), m_cols(cols), m_data(m_rows, std::vector<T>(m_cols, value))
 {
 }
@@ -168,7 +170,7 @@ Matrix<T> &Matrix<T>::operator-=(const Matrix<T> &rhs)
 template <typename T>
 Matrix<T> Matrix<T>::operator*(const T &scalar)
 {
-    Matrix<T> result(m_rows, m_cols);
+    auto result = Matrix<T>(m_rows, m_cols);
 
     for (std::size_t i = 0; i != m_rows; ++i)
     {
@@ -200,10 +202,11 @@ Matrix<T> Matrix<T>::operator/(const T &scalar)
 {
     if (scalar == 0)
     {
-        throw(std::overflow_error("You cannot divide by a scalar value of zero!"));
+        throw(std::overflow_error(
+            "You cannot divide by a scalar value of zero!"));
     }
 
-    Matrix<T> result(m_rows, m_cols);
+    auto result = Matrix<T>(m_rows, m_cols);
 
     for (std::size_t i = 0; i != m_rows; ++i)
     {
@@ -238,7 +241,7 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T> &rhs)
         throw(std::invalid_argument("Matrix dimensions does not match!"));
     }
 
-    Matrix<T> result(m_rows, rhs.m_cols);
+    auto result = Matrix<T>(m_rows, rhs.m_cols);
 
     for (std::size_t i = 0; i != m_rows; ++i)
     {
