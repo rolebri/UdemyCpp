@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-void fill_double_vector(std::vector<double> &vec)
+void fill_vector(std::vector<double> &vec)
 {
     for (std::size_t i = 0; i < vec.size(); i++)
     {
@@ -10,16 +10,16 @@ void fill_double_vector(std::vector<double> &vec)
     }
 }
 
-void print_double_vector(const std::vector<double> &vec)
+void print_vector(const std::vector<double> &vec)
 {
     for (std::size_t i = 0; i < vec.size(); i++)
     {
-        std::cout << "Vec[" << i << "] = " << vec[i] << std::endl;
+        std::cout << "Vec[" << i << "] = " << vec[i] << '\n';
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 }
 
-void exp_double_vector(std::vector<double> &vec)
+void exp_vector(std::vector<double> &vec)
 {
     for (std::size_t i = 0; i < vec.size(); i++)
     {
@@ -27,7 +27,7 @@ void exp_double_vector(std::vector<double> &vec)
     }
 }
 
-void log_double_vector(std::vector<double> &vec)
+void log_vector(std::vector<double> &vec)
 {
     for (std::size_t i = 0; i < vec.size(); i++)
     {
@@ -36,11 +36,10 @@ void log_double_vector(std::vector<double> &vec)
 }
 
 // Exercise:
-// 1.) Schreibe eine Function, die einen double-Vector mit aufsteigenden double-Werten befüllt
-// => z.b. [0.0, 1.0, 2.0, 3.0, 4.0, 5.0] bei einem Input Vector der Länge 6
-//      void fill_double_vector(std::vector<double> &vec)
-// 2.) Schreibe eine Function, die die Werte eines double-Vectors in der Konsole ausgibt
-//      void print_double_vector(const std::vector<double> &vec)
+// 1.) Schreibe eine Function, die einen Vector mit aufsteigenden Werten befüllt
+//     void fill_vector(std::vector<double> &vec)
+// 2.) Schreibe eine Function, die die Werte eines Vectors ausgibt
+//      void print_vector(const std::vector<double> &vec)
 // 3.) Schreibe Funktionen, die die:
 // - Exponential
 // - Natural Logarithm
@@ -51,16 +50,16 @@ void log_double_vector(std::vector<double> &vec)
 // [log(0.0), log(1.0), ...]
 int main()
 {
-    std::vector<double> my_vector(3, 0.0);
+    auto my_vector = std::vector<double>(3, 0.0);
 
-    fill_double_vector(my_vector);
-    print_double_vector(my_vector);
+    fill_vector(my_vector);
+    print_vector(my_vector);
 
-    exp_double_vector(my_vector);
-    print_double_vector(my_vector);
+    exp_vector(my_vector);
+    print_vector(my_vector);
 
-    log_double_vector(my_vector);
-    print_double_vector(my_vector);
+    log_vector(my_vector);
+    print_vector(my_vector);
 
     return 0;
 }

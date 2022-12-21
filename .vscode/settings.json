@@ -121,7 +121,11 @@
     "memory_resource": "cpp",
     "string_view": "cpp",
     "numbers": "cpp",
-    "semaphore": "cpp"
+    "semaphore": "cpp",
+    "bitset": "cpp",
+    "ranges": "cpp",
+    "set": "cpp",
+    "span": "cpp"
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,

@@ -1,41 +1,31 @@
 #include <iostream>
 #include <vector>
+#include <cstdint>
+
+void print_vector(const std::vector<std::int32_t> &vec)
+{
+    for (std::size_t i = 0; i < vec.size(); i++)
+    {
+        std::cout << vec[i] << ", ";
+    }
+    std::cout << std::endl;
+}
 
 int main()
 {
-    std::vector<int> my_vector(2, 0);
+    auto my_vector = std::vector<std::int32_t>(5, 0);
+    print_vector(my_vector);
 
-    for (std::size_t i = 0; i < my_vector.size(); i++)
-    {
-        std::cout << my_vector[i] << std::endl;
-    }
-    std::cout << std::endl;
+    my_vector[0] = 1337;
+    print_vector(my_vector);
 
-    my_vector[0] = 11;
-    my_vector[1] = -42;
-
-    for (std::size_t i = 0; i < my_vector.size(); i++)
-    {
-        std::cout << my_vector[i] << std::endl;
-    }
-    std::cout << std::endl;
-
-    my_vector.push_back(55);
-
-    for (std::size_t i = 0; i < my_vector.size(); i++)
-    {
-        std::cout << my_vector[i] << std::endl;
-    }
-    std::cout << std::endl;
+    my_vector.push_back(42);
+    print_vector(my_vector);
 
     my_vector.pop_back();
     my_vector.pop_back();
-
-    for (std::size_t i = 0; i < my_vector.size(); i++)
-    {
-        std::cout << my_vector[i] << std::endl;
-    }
-    std::cout << std::endl;
+    my_vector.pop_back();
+    print_vector(my_vector);
 
     return 0;
 }
