@@ -6,10 +6,10 @@
 
 int main()
 {
-    double fill_value = 1.0;
-    std::size_t length = 5;
+    auto fill_value = 1.0;
+    auto length = std::size_t{5};
 
-    DynamicArray my_array = create_dynamic_array(fill_value, length);
+    auto my_array = create_dynamic_array(fill_value, length);
 
     for (std::size_t i = 0; i < length; i++)
     {

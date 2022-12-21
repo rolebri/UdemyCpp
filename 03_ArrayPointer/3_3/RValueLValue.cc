@@ -1,6 +1,11 @@
 #include <iostream>
 
-void f(int v)
+// void f(int v) // lvalue: 5
+// void f(const int v) // const lvalue: 5
+// void f(int &v) // lvalue &: 2
+// void f(const int &v) // const lvalue &: 5
+
+void f(const int &v) // const lvalue &
 {
     std::cout << v << std::endl;
 }

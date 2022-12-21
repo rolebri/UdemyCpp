@@ -6,7 +6,7 @@
 
 double sum(const DynamicArray &dynamic_array)
 {
-    double sum_value = 0.0;
+    auto sum_value = 0.0;
 
     for (std::size_t i = 0; i < dynamic_array.m_length; i++)
     {
@@ -23,15 +23,15 @@ double mean(const DynamicArray &dynamic_array)
 
 double median(const DynamicArray &dynamic_array)
 {
-    const bool has_even_length = dynamic_array.m_length % 2 == 0;
+    const auto has_even_length = dynamic_array.m_length % 2 == 0;
 
     if (has_even_length)
     {
-        const std::size_t index1 = dynamic_array.m_length / 2;
-        const std::size_t index2 = (dynamic_array.m_length / 2) - 1;
+        const auto index1 = dynamic_array.m_length / 2;
+        const auto index2 = (dynamic_array.m_length / 2) - 1;
         return (dynamic_array.m_data[index1] + dynamic_array.m_data[index2]) / 2.0;
     }
 
-    const std::size_t index = dynamic_array.m_length / 2;
+    const auto index = dynamic_array.m_length / 2;
     return dynamic_array.m_data[index];
 }
