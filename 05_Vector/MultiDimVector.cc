@@ -1,28 +1,35 @@
+#include <cstdint>
 #include <iostream>
 #include <vector>
 
-void print_matrix(const std::vector<std::vector<int>> &matrix)
-{
-    for (std::size_t i = 0; i < matrix.size(); i++)
-    {
-        for (std::size_t j = 0; j < matrix[i].size(); j++)
-        {
-            std::cout << "Matrix[" << i << "," << j << "] = " << matrix[i][j]
-                      << std::endl;
-        }
-    }
-    std::cout << std::endl;
-}
-
 int main()
 {
-    const std::size_t num_rows = 3;
-    const std::size_t num_cols = 2;
+    // 2d-Array (Matrix)
+    // Number of rows = 3
+    // Number of columns = 2
+    std::int32_t my_matrix2[3][2] = {{1, 2}, {3, 4}, {5, 6}};
 
-    // int array[num_rows][num_cols] = {{0, 1,}, {2, 3}, {4, 5}};
+    for (std::size_t i = 0; i < 3; i++)
+    {
+        for (std::size_t j = 0; j < 2; j++)
+        {
+            std::cout << my_matrix2[i][j] << std::endl;
+        }
+    }
 
-    std::vector<std::vector<int>> matrix(num_rows, std::vector<int>(num_cols, 0));
-    print_matrix(matrix);
+    // auto my_vector =
+    //     std::vector<std::vector<std::int32_t>>{{1, 2}, {3, 4}, {5, 6}};
+    auto my_vector =
+        std::vector<std::vector<std::int32_t>>(3,
+                                               std::vector<std::int32_t>(2, 0));
+
+    for (const auto &row : my_vector)
+    {
+        for (const auto val : row)
+        {
+            std::cout << val << std::endl;
+        }
+    }
 
     return 0;
 }
