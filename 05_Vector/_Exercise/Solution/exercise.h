@@ -2,11 +2,12 @@
 
 #include <vector>
 
-// Exercise 1
-using Matrix = std::vector<std::vector<double>>;
+using ValueT = double;
+using VectorT = std::vector<ValueT>;
+using MatrixT = std::vector<VectorT>;
 
 // Exercise 2
-std::vector<double> max_row_values(Matrix &matrix);
+VectorT max_row_values(MatrixT &matrix);
 
 // Exercise 3
-double sort_and_max(std::vector<double> &vec);
+ValueT sort_and_max(VectorT &vec);

@@ -5,9 +5,9 @@
 #include "exercise.h"
 
 // Exercise 2
-std::vector<double> max_row_values(Matrix &matrix)
+VectorT max_row_values(MatrixT &matrix)
 {
-    auto row_max_vec = std::vector<double>(matrix.size(), 0.0);
+    auto row_max_vec = VectorT(matrix.size(), 0.0);
     if (!matrix.size() || !matrix[0].size())
         return row_max_vec;
 
@@ -30,7 +30,7 @@ std::vector<double> max_row_values(Matrix &matrix)
 }
 
 // Exercise 3
-double sort_and_max(std::vector<double> &vec)
+ValueT sort_and_max(VectorT &vec)
 {
     std::sort(vec.begin(), vec.end());
 
