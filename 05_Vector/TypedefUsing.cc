@@ -7,22 +7,27 @@ struct PlayerData
     float y;
 };
 
-// typedef std::vector<PlayerData> PlayerDataVector;
-using PlayerDataVector = std::vector<PlayerData>;
+// AllPlayerData
+
+// C-Approach
+// typedef std::vector<PlayerData> AllPlayerData;
+
+// C++-Approach
+using AllPlayerData = std::vector<PlayerData>;
 
 int main()
 {
-    auto vec = PlayerDataVector{PlayerData{1.0F, 2.0F}, PlayerData{4.0F, 6.0F}};
+    auto vec = AllPlayerData{PlayerData{1.0F, 2.0F}, PlayerData{4.0F, 6.0F}};
 
     for (auto [x_, y_] : vec)
     {
         x_ = -1.0F;
-        std::cout << x_ << " " << y_ << std::endl;
+        std::cout << x_ << " " << y_ << '\n';
     }
 
     for (auto &[x_, y_] : vec)
     {
-        std::cout << x_ << " " << y_ << std::endl;
+        std::cout << x_ << " " << y_ << '\n';
     }
 
     return 0;

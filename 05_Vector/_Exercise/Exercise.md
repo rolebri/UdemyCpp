@@ -20,7 +20,7 @@ Verwende dabei den vordefinierten Matrix Typ aus dem Header.
 Schreibt eine Funktion
 
 ```cpp
-std::vector<double> max_row_values(Matrix &matrix);
+VectorT max_row_values(MatrixT &matrix);
 ```
 
 die eine Matrix entgegennimmt und die Zeilenmaxima der Matrix berechnet und diese Maximima in einen neuen Vector abspeichert.Diesen neuen erstellten Vector returned die Funktion dann.
@@ -34,7 +34,7 @@ die eine Matrix entgegennimmt und die Zeilenmaxima der Matrix berechnet und di
 Schreibt eine Funktion
 
 ```cpp
-double sort_and_max(std::vector<double> &vec);
+ValueT sort_and_max(VectorT &vec);
 ```
 
 die einen Double-Vector entgegennimmt und diesen aufstiegend sortiert und zusätzlich das Maximum des Vektors zurückgibt.

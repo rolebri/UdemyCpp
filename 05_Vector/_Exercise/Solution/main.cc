@@ -29,7 +29,7 @@ void printVector(const VectorT &vec)
 int main()
 {
     // Exercise 1
-    auto matrix = MatrixT(3, std::vector<double>(3, 0.0));
+    auto matrix = MatrixT(3, VectorT(3, 0.0));
 
     for (std::size_t i = 0; i != matrix.size(); ++i)
     {

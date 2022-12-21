@@ -3,14 +3,7 @@
 template <typename T>
 T max(const T &a, const T &b)
 {
-    if (a < b)
-    {
-        return b;
-    }
-    else
-    {
-        return a;
-    }
+    return a < b ? b : a;
 }
 
 int main()

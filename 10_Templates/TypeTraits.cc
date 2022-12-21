@@ -4,17 +4,11 @@
 // template <typename T>
 // T max(const T &a, const T &b)
 // {
-//     static_assert(std::disjunction_v<std::is_integral<T>, std::is_floating_point<T>>,
-//                   "failed...");
+//     static_assert(
+//         std::disjunction_v<std::is_integral<T>, std::is_floating_point<T>>,
+//         "failed...");
 
-//     if (a < b)
-//     {
-//         return b;
-//     }
-//     else
-//     {
-//         return a;
-//     }
+//     return a < b ? b : a;
 // }
 
 template <typename T>
@@ -26,16 +20,9 @@ struct is_numeric
 template <typename T, typename U>
 T max(const T &a, const U &b)
 {
-    static_assert(std::conjunction_v<is_numeric<T>, is_numeric<U>>, "failed...");
+    static_assert(std::conjunction_v<is_numeric<T>, is_numeric<U>>, "failed.");
 
-    if (a < b)
-    {
-        return b;
-    }
-    else
-    {
-        return a;
-    }
+    return a < b ? b : a;
 }
 
 int main()
