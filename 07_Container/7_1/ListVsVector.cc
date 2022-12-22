@@ -8,8 +8,12 @@
 
 #include "Timer.h"
 
+namespace
+{
 constexpr static auto NUM_RUNS = std::size_t{5};
 constexpr static auto ELEMENTS = std::size_t{100'000};
+} // namespace
+
 
 #define USING_VEC
 
@@ -25,25 +29,27 @@ using Container_t = std::list<std::int32_t>;
 3. Iterate over all
 4. Random Index
 
+Timings with MSVC 2022 - x64 with /Ox /GL
+
 Vector:
-Insert: 2014.2 ms
-Delete: 643.2 ms
-Sum: 36 us
-Random Index: 522.4 us
-= 2.657ms
+Insert: 1165.6 ms
+Delete: 4659.8 ms
+Sum: 44.6 us
+Random Index: 1225.2 us
+= 7050.6446 ms
 
 List:
-Insert: 5.2ms
-Delete: 4.4ms
-Sum: 204.6 us
-Random Index:
-= 5.818 ms
+Insert: 2.2 ms
+Delete: 1.2 ms
+Sum: 527 us
+Random Index: 14750.7 ms
+= 14.478,997 ms
 */
 
 Container_t generate_container()
 {
-    auto gen = std::mt19937{0};
-    auto dist = std::uniform_int_distribution<std::int32_t>{-100, 100};
+    static auto gen = std::mt19937{0};
+    static auto dist = std::uniform_int_distribution<std::int32_t>{-100, 100};
 
     auto c = Container_t(ELEMENTS, 0);
     std::generate(c.begin(), c.end(), [&]() { return dist(gen); });
@@ -81,8 +87,8 @@ void summing(Container_t &c)
 
 void indexing(std::vector<std::int32_t> &c)
 {
-    auto gen = std::mt19937{0};
-    auto dist = std::uniform_int_distribution<std::size_t>{0, ELEMENTS};
+    static auto gen = std::mt19937{0};
+    static auto dist = std::uniform_int_distribution<std::size_t>{0, ELEMENTS};
 
     auto index = std::size_t{0};
     for (std::size_t i = 0; i < ELEMENTS; ++i)
@@ -94,8 +100,8 @@ void indexing(std::vector<std::int32_t> &c)
 
 void indexing(std::list<std::int32_t> &c)
 {
-    std::random_device gen;
-    std::uniform_int_distribution<std::size_t> dist(0, ELEMENTS);
+    static auto gen = std::mt19937{0};
+    static auto dist = std::uniform_int_distribution<std::size_t>{0, ELEMENTS};
 
     auto index = std::size_t{0};
     for (std::size_t i = 0; i < ELEMENTS; ++i)
@@ -114,18 +120,23 @@ void indexing(std::list<std::int32_t> &c)
 
 int main()
 {
+#ifdef USING_VEC
+    std::cout << "Vector:\n";
+#else
+    std::cout << "List:\n";
+#endif
     {
         auto total_time = double{0.0};
 
         for (std::size_t run = 0; run < NUM_RUNS; run++)
         {
-            Container_t c = generate_container();
-            cpptiming::Timer t;
+            auto c = generate_container();
+            const auto t = cpptiming::Timer{};
             insertion(c);
             total_time += t.elapsed_time<cpptiming::millisecs, double>();
         }
 
-        std::cout << "Insert: " << total_time / NUM_RUNS << " ms" << std::endl;
+        std::cout << "Insert: " << total_time / NUM_RUNS << " ms" << '\n';
     }
 
     {
@@ -133,13 +144,13 @@ int main()
 
         for (std::size_t run = 0; run < NUM_RUNS; run++)
         {
-            Container_t c = generate_container();
-            cpptiming::Timer t;
+            auto c = generate_container();
+            const auto t = cpptiming::Timer{};
             deletion(c);
             total_time += t.elapsed_time<cpptiming::millisecs, double>();
         }
 
-        std::cout << "Delete: " << total_time / NUM_RUNS << " ms" << std::endl;
+        std::cout << "Delete: " << total_time / NUM_RUNS << " ms" << '\n';
     }
 
     {
@@ -147,13 +158,13 @@ int main()
 
         for (std::size_t run = 0; run < NUM_RUNS; run++)
         {
-            Container_t c = generate_container();
-            cpptiming::Timer t;
+            auto c = generate_container();
+            const auto t = cpptiming::Timer{};
             summing(c);
             total_time += t.elapsed_time<cpptiming::microsecs, double>();
         }
 
-        std::cout << "Sum: " << total_time / NUM_RUNS << " us" << std::endl;
+        std::cout << "Sum: " << total_time / NUM_RUNS << " us" << '\n';
     }
 
     {
@@ -161,13 +172,13 @@ int main()
 
         for (std::size_t run = 0; run < NUM_RUNS; run++)
         {
-            Container_t c = generate_container();
+            auto c = generate_container();
             cpptiming::Timer t;
             indexing(c);
             total_time += t.elapsed_time<cpptiming::microsecs, double>();
         }
 
-        std::cout << "Random Index: " << total_time / NUM_RUNS << " us" << std::endl;
+        std::cout << "Random Index: " << total_time / NUM_RUNS << " us" << '\n';
     }
 
     return 0;
