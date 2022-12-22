@@ -2,16 +2,24 @@
 #include <iostream>
 #include <vector>
 
-void fill_double_vector(std::vector<double> &vec)
+struct PlayerData
+{
+    float x;
+    float y;
+};
+
+template <typename T>
+void fill_vector(std::vector<T> &vec)
 {
     for (int i = 0; auto &value : vec)
     {
-        value = static_cast<double>(i);
+        value = static_cast<T>(i);
         i++;
     }
 }
 
-void print_double_vector(const std::vector<double> &vec)
+template <typename T>
+void print_vector(const std::vector<T> &vec)
 {
     for (int i = 0; const auto &value : vec)
     {
@@ -21,36 +29,19 @@ void print_double_vector(const std::vector<double> &vec)
     std::cout << std::endl;
 }
 
-void exp_double_vector(std::vector<double> &vec)
-{
-    for (auto &value : vec)
-    {
-        value = std::exp(value);
-    }
-}
-
-void log_double_vector(std::vector<double> &vec)
-{
-    for (auto &value : vec)
-    {
-        value = std::log(value);
-    }
-}
-
-// Exercise:
-// Implementiere die bestehenden Funktionen mit einer ranged for
 int main()
 {
-    auto my_vector = std::vector<double>(3, 0.0);
+    auto my_vector1 = std::vector<std::int32_t>(3, 0);
+    auto my_vector2 = std::vector<float>(3, 0);
+    auto my_vector3 = std::vector<char>(3, 97);
 
-    fill_double_vector(my_vector);
-    print_double_vector(my_vector);
+    print_vector(my_vector1);
+    print_vector(my_vector2);
+    print_vector(my_vector3);
 
-    exp_double_vector(my_vector);
-    print_double_vector(my_vector);
-
-    log_double_vector(my_vector);
-    print_double_vector(my_vector);
+    // auto my_vector4 =
+    //     std::vector<PlayerData>{PlayerData{1.0F, 2.0F}, PlayerData{4.0F, 6.0F}};
+    // print_vector(my_vector4);
 
     return 0;
 }
