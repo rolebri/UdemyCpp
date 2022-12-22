@@ -4,7 +4,8 @@
 #include <span>
 #include <vector>
 
-// void print_container(const std::vector<std::int32_t> &vec)
+// template <typename T>
+// void print_container(const std::vector<T> &vec)
 // {
 //     for (const auto val : vec)
 //     {
@@ -12,8 +13,8 @@
 //     }
 // }
 
-// template <std::size_t N>
-// void print_container(const std::array<std::int32_t, N> &arr)
+// template <typename T, std::size_t N>
+// void print_container(const std::array<T, N> &arr)
 // {
 //     for (const auto val : arr)
 //     {
@@ -21,7 +22,8 @@
 //     }
 // }
 
-void print_container(std::span<std::int32_t> span)
+template <typename T>
+void print_container(std::span<const T> span)
 {
     for (const auto val : span)
     {
@@ -35,9 +37,17 @@ int main()
     auto my_vec = std::vector<std::int32_t>{1, 2, 3, 4, 5};
     auto my_arr = std::array<std::int32_t, 5U>{1, 2, 3, 4, 5};
 
-    print_container(my_vec);
-    print_container(my_arr);
-    print_container(my_c_arr);
+    print_container<std::int32_t>(my_vec);
+    std::cout << '\n';
+    print_container<std::int32_t>(my_arr);
+    std::cout << '\n';
+    print_container<std::int32_t>(my_c_arr);
+    std::cout << '\n';
+
+    auto vec_span = std::span{my_vec};
+    auto sspan = vec_span.subspan(1, 2);
+    print_container<std::int32_t>(sspan);
+    std::cout << '\n';
 
     return 0;
 }
