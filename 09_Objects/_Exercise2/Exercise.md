@@ -15,8 +15,8 @@ In dieser Programmierübung erweitern wir unsere Matrix Klasse.
 Schreibe eine Funktion, die eine Matrix mit einem Skalaren Wert multipliziert.
 
 ```cpp
-Matrix operator*(const double &scalar)
-Matrix& operator*=(const double &scalar);
+Matrix operator*(const T &scalar)
+Matrix& operator*=(const T &scalar);
 ```
 
 ### Aufgabe 2
@@ -24,6 +24,6 @@ Matrix& operator*=(const double &scalar);
 Schreibe eine Funktion, die eine Matrix mit einem Skalaren Wert dividiert.
 
 ```cpp
-Matrix operator/(const double &scalar);
-Matrix& operator/=(const double &scalar);
+Matrix operator/(const T &scalar);
+Matrix& operator/=(const T &scalar);
 ```
