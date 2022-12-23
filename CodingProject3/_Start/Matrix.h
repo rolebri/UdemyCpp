@@ -5,9 +5,6 @@
 #include <iostream>
 #include <vector>
 
-namespace cppmath
-{
-
 template <typename T>
 class Matrix
 {
@@ -15,17 +12,25 @@ public:
     using MatrixDataType = std::vector<std::vector<T>>;
 
     Matrix() = delete;
-    Matrix(std::size_t rows, std::size_t cols);
-    Matrix(std::size_t rows, std::size_t cols, const T &value);
+    Matrix(const std::size_t rows, const std::size_t cols);
+    Matrix(const std::size_t rows, const std::size_t cols, const T value);
+    ~Matrix() noexcept = default;
 
-    Matrix operator+(const Matrix &rhs);
+    Matrix(const Matrix &other) = default;
+    Matrix &operator=(const Matrix &other) = default;
+    Matrix(Matrix &&other) noexcept = default;
+    Matrix &operator=(Matrix &&other) noexcept = default;
+
+    Matrix operator+(const Matrix &rhs) const;
     Matrix &operator+=(const Matrix &rhs);
-    Matrix operator-(const Matrix &rhs);
+    Matrix operator-(const Matrix &rhs) const;
     Matrix &operator-=(const Matrix &rhs);
-    Matrix operator*(const T &scalar);
+
+    Matrix operator*(const T &scalar) const;
     Matrix &operator*=(const T &scalar);
-    Matrix operator/(const T &scalar);
+    Matrix operator/(const T &scalar) const;
     Matrix &operator/=(const T &scalar);
+
     Matrix operator*(const Matrix &rhs);
     Matrix &operator*=(const Matrix &rhs);
 
@@ -40,4 +45,87 @@ private:
     MatrixDataType m_data;
 };
 
-} // namespace cppmath
+template <typename T>
+Matrix<T>::Matrix(const std::size_t rows, const std::size_t cols)
+{
+}
+
+template <typename T>
+Matrix<T>::Matrix(const std::size_t rows, const std::size_t cols, const T value)
+{
+}
+
+template <typename T>
+Matrix<T> Matrix<T>::operator+(const Matrix<T> &rhs) const
+{
+    auto result = Matrix{};
+
+
+    return result;
+}
+
+template <typename T>
+Matrix<T> &Matrix<T>::operator+=(const Matrix<T> &rhs)
+{
+
+    return *this;
+}
+
+template <typename T>
+Matrix<T> Matrix<T>::operator-(const Matrix<T> &rhs) const
+{
+    auto result = Matrix{};
+
+    return result;
+}
+
+template <typename T>
+Matrix<T> &Matrix<T>::operator-=(const Matrix<T> &rhs)
+{
+
+    return *this;
+}
+
+template <typename T>
+Matrix<T> Matrix<T>::operator*(const T &scalar) const
+{
+    auto result = Matrix{};
+
+    return result;
+}
+
+template <typename T>
+Matrix<T> &Matrix<T>::operator*=(const T &scalar)
+{
+
+    return *this;
+}
+
+template <typename T>
+Matrix<T> Matrix<T>::operator/(const T &scalar) const
+{
+    auto result = Matrix{};
+
+    return result;
+}
+
+template <typename T>
+Matrix<T> &Matrix<T>::operator/=(const T &scalar)
+{
+
+    return *this;
+}
+
+template <typename T>
+void Matrix<T>::print_matrix() const
+{
+    for (const auto &row : m_data)
+    {
+        for (const auto val : row)
+        {
+            std::cout << val << ", ";
+        }
+
+        std::cout << '\n';
+    }
+}
