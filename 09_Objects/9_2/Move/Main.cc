@@ -6,9 +6,14 @@
 
 int main()
 {
-    std::vector<DynamicArray<int>> vec;
+    auto d = std::vector<DynamicArray<int>>{};
 
-    vec.push_back(DynamicArray<int>{1, 1});
+    // Copy
+    auto a = DynamicArray<int>{1, 1};
+    d.push_back(a);
+
+    // Move
+    d.push_back(DynamicArray<int>{1, 1});
 
     return 0;
 }
