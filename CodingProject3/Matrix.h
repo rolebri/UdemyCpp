@@ -92,7 +92,7 @@ Matrix<T> &Matrix<T>::operator+=(const Matrix<T> &rhs)
 template <typename T>
 Matrix<T> Matrix<T>::operator-(const Matrix<T> &rhs) const
 {
-    auto result = Matrix{};
+    auto result = Matrix(m_rows, m_cols);
 
     for (std::size_t i = 0; i < m_rows; ++i)
     {
@@ -124,7 +124,15 @@ Matrix<T> &Matrix<T>::operator-=(const Matrix<T> &rhs)
 template <typename T>
 Matrix<T> Matrix<T>::operator*(const T &scalar) const
 {
-    auto result = Matrix{};
+    auto result = Matrix(m_rows, m_cols);
+
+    for (std::size_t i = 0; i < m_rows; ++i)
+    {
+        std::transform(m_data[i].begin(),
+                       m_data[i].end(),
+                       result.m_data[i].begin(),
+                       [](const T &val) { return val * scalar; });
+    }
 
     return result;
 }
@@ -132,6 +140,13 @@ Matrix<T> Matrix<T>::operator*(const T &scalar) const
 template <typename T>
 Matrix<T> &Matrix<T>::operator*=(const T &scalar)
 {
+    for (std::size_t i = 0; i < m_rows; ++i)
+    {
+        std::transform(m_data[i].begin(),
+                       m_data[i].end(),
+                       m_data[i].begin(),
+                       [](const T &val) { return val * scalar; });
+    }
 
     return *this;
 }
@@ -139,7 +154,15 @@ Matrix<T> &Matrix<T>::operator*=(const T &scalar)
 template <typename T>
 Matrix<T> Matrix<T>::operator/(const T &scalar) const
 {
-    auto result = Matrix{};
+    auto result = Matrix(m_rows, m_cols);
+
+    for (std::size_t i = 0; i < m_rows; ++i)
+    {
+        std::transform(m_data[i].begin(),
+                       m_data[i].end(),
+                       result.m_data[i].begin(),
+                       [](const T &val) { return val / scalar; });
+    }
 
     return result;
 }
@@ -147,6 +170,13 @@ Matrix<T> Matrix<T>::operator/(const T &scalar) const
 template <typename T>
 Matrix<T> &Matrix<T>::operator/=(const T &scalar)
 {
+    for (std::size_t i = 0; i < m_rows; ++i)
+    {
+        std::transform(m_data[i].begin(),
+                       m_data[i].end(),
+                       m_data[i].begin(),
+                       [](const T &val) { return val / scalar; });
+    }
 
     return *this;
 }
@@ -154,11 +184,29 @@ Matrix<T> &Matrix<T>::operator/=(const T &scalar)
 template <typename T>
 Matrix<T> Matrix<T>::operator*(const Matrix &rhs) const
 {
+    auto result = Matrix(m_rows, m_cols);
+
+    for (std::size_t i = 0; i != m_cols; ++i)
+    {
+        for (std::size_t k = 0; k != rhs.m_rows; ++k)
+        {
+            for (std::size_t j = 0; j != rhs.m_cols; ++j)
+            {
+                result.m_data[i][j] +=
+                    m_data[i][k] * rhs.m_data[k][j];
+            }
+        }
+    }
+
+    return result;
 }
 
 template <typename T>
 Matrix<T> &Matrix<T>::operator*=(const Matrix &rhs)
 {
+    *this = (*this) * rhs;
+
+    return *this;
 }
 
 template <typename T>

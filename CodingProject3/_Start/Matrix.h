@@ -58,7 +58,7 @@ Matrix<T>::Matrix(const std::size_t rows, const std::size_t cols, const T value)
 template <typename T>
 Matrix<T> Matrix<T>::operator+(const Matrix<T> &rhs) const
 {
-    auto result = Matrix{};
+    auto result = Matrix(m_rows, m_cols);
 
 
     return result;
@@ -74,7 +74,7 @@ Matrix<T> &Matrix<T>::operator+=(const Matrix<T> &rhs)
 template <typename T>
 Matrix<T> Matrix<T>::operator-(const Matrix<T> &rhs) const
 {
-    auto result = Matrix{};
+    auto result = Matrix(m_rows, m_cols);
 
     return result;
 }
@@ -89,7 +89,7 @@ Matrix<T> &Matrix<T>::operator-=(const Matrix<T> &rhs)
 template <typename T>
 Matrix<T> Matrix<T>::operator*(const T &scalar) const
 {
-    auto result = Matrix{};
+    auto result = Matrix(m_rows, m_cols);
 
     return result;
 }
@@ -104,23 +104,28 @@ Matrix<T> &Matrix<T>::operator*=(const T &scalar)
 template <typename T>
 Matrix<T> Matrix<T>::operator/(const T &scalar) const
 {
-    auto result = Matrix{};
+    auto result = Matrix(m_rows, m_cols);
 
     return result;
 }
 
 template <typename T>
+Matrix<T> &Matrix<T>::operator/=(const T &scalar)
+{
+
+    return *this;
+}
+
+template <typename T>
 Matrix<T> Matrix<T>::operator*(const Matrix &rhs) const
 {
+    auto result = Matrix(m_rows, m_cols);
+
+    return result;
 }
 
 template <typename T>
 Matrix<T> &Matrix<T>::operator*=(const Matrix &rhs)
-{
-}
-
-template <typename T>
-Matrix<T> &Matrix<T>::operator/=(const T &scalar)
 {
 
     return *this;

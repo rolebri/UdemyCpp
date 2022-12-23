@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "console": "externalTerminal",
-      "cwd": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/CodingProject3/_Start",
-      "program": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/CodingProject3/_Start/build/Debug/outDebug"
+      "cwd": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/CodingProject3",
+      "program": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/CodingProject3/build/Debug/outDebug"
     }
   ]
 }
