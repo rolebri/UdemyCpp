@@ -99,7 +99,7 @@ Matrix<T> &Matrix<T>::operator-=(const Matrix<T> &rhs)
 template <typename T>
 Matrix<T> Matrix<T>::operator*(const T &scalar) const
 {
-    Matrix result;
+    auto result = Matrix{};
 
     result.set_A(get_A() * scalar);
     result.set_B(get_B() * scalar);
@@ -123,7 +123,7 @@ Matrix<T> &Matrix<T>::operator*=(const T &scalar)
 template <typename T>
 Matrix<T> Matrix<T>::operator/(const T &scalar) const
 {
-    Matrix result;
+    auto result = Matrix{};
 
     result.set_A(get_A() / scalar);
     result.set_B(get_B() / scalar);

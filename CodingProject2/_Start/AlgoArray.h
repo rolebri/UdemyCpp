@@ -7,7 +7,7 @@
 template <typename T>
 T sum(DynamicArray<T> &dynamic_array)
 {
-    T sum_value = 0.0;
+    auto sum_value = T{};
 
     for (std::size_t i = 0; i < dynamic_array.get_length(); i++)
     {
@@ -26,15 +26,15 @@ double mean(DynamicArray<T> &dynamic_array)
 template <typename T>
 double median(DynamicArray<T> &dynamic_array)
 {
-    const bool has_even_length = dynamic_array.get_length() % 2 == 0;
+    const auto has_even_length = dynamic_array.get_length() % 2 == 0;
 
     if (has_even_length)
     {
-        const std::size_t index1 = dynamic_array.get_length() / 2;
-        const std::size_t index2 = (dynamic_array.get_length() / 2) - 1;
+        const auto index1 = dynamic_array.get_length() / 2;
+        const auto index2 = (dynamic_array.get_length() / 2) - 1;
         return (dynamic_array[index1] + dynamic_array[index2]) / 2.0;
     }
 
-    const std::size_t index = dynamic_array.get_length() / 2;
+    const auto index = dynamic_array.get_length() / 2;
     return dynamic_array[index];
 }
