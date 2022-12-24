@@ -125,7 +125,9 @@
     "bitset": "cpp",
     "ranges": "cpp",
     "set": "cpp",
-    "span": "cpp"
+    "span": "cpp",
+    "any": "cpp",
+    "variant": "cpp"
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
