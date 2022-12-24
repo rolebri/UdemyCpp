@@ -5,13 +5,18 @@
     return 1;
 }
 
-enum class [[nodiscard]] ReturnCodes{OK, NoData, Error};
+enum class [[nodiscard]] ReturnCodes
+{
+    OK,
+    NoData,
+    Error
+};
 
 struct [[nodiscard]] Item
 {
 };
 
-[[deprecated("Use func2()")]] void func1()
+[[deprecated("Func1 is deprecated consider using func2()")]] void func1()
 {
 }
 
@@ -29,14 +34,14 @@ int main()
     int alternative = get_value1();
     switch (alternative)
     {
-        [[likely]] case 1 : [[fallthrough]];
-        [[likely]] case 2:
-        {
-            std::cout << "Case 1 and 2\n";
-            break;
-        }
-    default:
-        std::cout << "Default\n";
+    [[likely]] case 1:
+        [[fallthrough]];
+    [[likely]] case 2:
+    {
+        std::cout << "Case 1 and 2\n";
+        break;
+    }
+        [[unlikely]] default : std::cout << "Default\n";
     }
 
     return 0;
