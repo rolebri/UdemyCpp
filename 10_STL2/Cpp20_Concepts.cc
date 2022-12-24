@@ -3,30 +3,36 @@
 #include <string>
 
 template <typename T>
-concept Addable = requires(T x)
+concept LessComp = requires(T x, T y) { x < y; };
+
+template <typename T>
+concept Numeric = std::integral<T> || std::floating_point<T>;
+
+template <typename T>
+concept NumComp = Numeric<T> && LessComp<T>;
+
+template <typename T, typename U>
+    requires NumComp<T> && NumComp<U>
+auto max1(const T &a, const U &b)
 {
-    x + x;
-};
+    return a < b ? b : a;
+}
 
-template <typename T>
-concept NonNumeric = !std::integral<T> && !std::floating_point<T>;
-
-template <typename T>
-concept Concatenable = Addable<T> && NonNumeric<T>;
-
-template <typename T>
-requires Concatenable<T> T concat(T first, T second)
+template <NumComp T, NumComp U>
+auto max2(const T &a, const U &b)
 {
-    return first + second;
+    return a < b ? b : a;
 }
 
 int main()
 {
-    const auto s1 = std::string{"Hel"};
-    const auto s2 = std::string{"lo"};
+    std::cout << max1(10, 11) << std::endl;
+    std::cout << max1(10.0F, 11.0F) << std::endl;
+    std::cout << max1(10.0, 11.0) << std::endl;
 
-    std::cout << concat(s1, s2) << std::endl;
-    // std::cout << concat(1, 2) << std::endl;
+    std::cout << max2(10, 11) << std::endl;
+    std::cout << max2(10.0F, 11.0F) << std::endl;
+    std::cout << max2(10.0, 11.0) << std::endl;
 
     return 0;
 }
