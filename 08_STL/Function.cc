@@ -1,32 +1,36 @@
+#include <cstdint>
 #include <functional>
 #include <iostream>
+#include <vector>
 
-int f(int arg)
+std::int32_t f(const std::function<std::int32_t(const std::int32_t)> &callback)
 {
-    std::cout << arg << '\n';
-
-    return ++arg;
-}
-
-int new_approach2(std::function<int(int)> func)
-{
-    return func(2);
+    return callback(2);
 }
 
 int main()
 {
-    auto param = int{1};
+    const auto result1 = f([](const std::int32_t v) { return v * 2; });
+    std::cout << result1 << '\n';
 
-    // Old C-style approach
-    int (*old_approach)(int);
-    old_approach = f;
-    old_approach(2);
+    auto l = [](const std::int32_t v) { return v * 2; };
+    const auto result2 = f(l);
+    std::cout << result2 << '\n';
 
-    // C++ approach
-    auto new_approach = std::function{f};
-    auto result = new_approach(param);
+    const std::int32_t threshold = 2;
+    auto fns = std::vector<std::function<bool(const std::int32_t)>>{
+        [&threshold](const std::int32_t v) { return v > threshold; },
+        [&threshold](const std::int32_t v) { return v < threshold; },
+        [&threshold](const std::int32_t v) { return v == threshold; },
+        [&threshold](const std::int32_t v) { return v != threshold; },
+        [&threshold](const std::int32_t v) { return v >= threshold; },
+        [&threshold](const std::int32_t v) { return v <= threshold; },
+    };
 
-    new_approach2(f);
+    for (const auto &fn : fns)
+    {
+        std::cout << std::boolalpha << fn(1) << '\n';
+    }
 
     return 0;
 }
