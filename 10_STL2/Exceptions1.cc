@@ -1,10 +1,11 @@
+#include <exception>
 #include <iostream>
 
-double div(double x, double y)
+double div(const double x, const double y)
 {
     if (y == 0.0)
     {
-        throw "Division by zero!";
+        throw std::invalid_argument("Divisor is zero!");
     }
 
     return x / y;
@@ -12,22 +13,18 @@ double div(double x, double y)
 
 int main()
 {
-    double x = 10.0;
-    double y;
+    const auto x = 10.0;
+    const auto y = 0.0;
 
     std::cout << "We will compute (x/y)" << '\n';
-    std::cout << "Please enter a value for y=";
-    std::cin >> y;
-    std::cout << '\n';
-
     try
     {
-        double z = div(x, y);
+        const auto z = div(x, y);
         std::cout << "x/y = " << z << '\n';
     }
-    catch (const char *msg)
+    catch (const std::exception &e)
     {
-        std::cerr << msg << '\n';
+        std::cerr << e.what() << '\n';
     }
 
     return 0;

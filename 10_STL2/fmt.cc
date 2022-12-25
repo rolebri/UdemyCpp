@@ -1,4 +1,4 @@
-#include <chrono>
+#include <array>
 #include <format>
 #include <iostream>
 
@@ -16,10 +16,7 @@ int main()
     std::cout << my_str2 << '\n';
 
     std::cout << std::format("{0} hex is {0:08X}", 42) << '\n';
-
-    char buf[100]{};
-    std::format_to_n(buf, sizeof(buf), "{} is {}", "John", 42);
-    std::cout << buf << '\n';
+    std::cout << std::format("{0} bin is {0:08B}", 42) << '\n';
 
     return 0;
 }
