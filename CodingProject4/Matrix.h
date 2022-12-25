@@ -4,26 +4,17 @@
 #include <exception>
 #include <functional>
 #include <iostream>
-#include <stdexcept>
-#include <type_traits>
 #include <vector>
-
-namespace cppmath
-{
 
 template <typename T>
 class Matrix
 {
-    static_assert(std::is_floating_point_v<T>,
-                  "An specialization of the matrix class has be of a floating "
-                  "point type!");
-
 public:
     using MatrixDataType = std::vector<std::vector<T>>;
 
     Matrix() = delete;
     Matrix(const std::size_t rows, const std::size_t cols);
-    Matrix(const std::size_t rows, const std::size_t cols, const T &value);
+    Matrix(const std::size_t rows, const std::size_t cols, const T value);
     ~Matrix() noexcept = default;
 
     Matrix(const Matrix &other) = default;
@@ -31,21 +22,23 @@ public:
     Matrix(Matrix &&other) noexcept = default;
     Matrix &operator=(Matrix &&other) noexcept = default;
 
-    [[nodiscard]] Matrix operator+(const Matrix &rhs);
-    [[nodiscard]] Matrix &operator+=(const Matrix &rhs);
-    [[nodiscard]] Matrix operator-(const Matrix &rhs);
-    [[nodiscard]] Matrix &operator-=(const Matrix &rhs);
-    [[nodiscard]] Matrix operator*(const T &scalar);
-    [[nodiscard]] Matrix &operator*=(const T &scalar);
-    [[nodiscard]] Matrix operator/(const T &scalar);
-    [[nodiscard]] Matrix &operator/=(const T &scalar);
-    [[nodiscard]] Matrix operator*(const Matrix &rhs);
-    [[nodiscard]] Matrix &operator*=(const Matrix &rhs);
+    Matrix operator+(const Matrix &rhs) const;
+    Matrix &operator+=(const Matrix &rhs);
+    Matrix operator-(const Matrix &rhs) const;
+    Matrix &operator-=(const Matrix &rhs);
 
-    [[nodiscard]] std::size_t num_rows() const;
-    [[nodiscard]] std::size_t num_cols() const;
+    Matrix operator*(const T &scalar) const;
+    Matrix &operator*=(const T &scalar);
+    Matrix operator/(const T &scalar) const;
+    Matrix &operator/=(const T &scalar);
+
+    Matrix operator*(const Matrix &rhs) const;
+    Matrix &operator*=(const Matrix &rhs);
 
     void print_matrix() const;
+
+    std::size_t num_rows() const;
+    std::size_t num_cols() const;
 
 private:
     std::size_t m_rows;
@@ -55,20 +48,18 @@ private:
 
 template <typename T>
 Matrix<T>::Matrix(const std::size_t rows, const std::size_t cols)
-    : m_rows(rows), m_cols(cols), m_data(m_rows, std::vector<T>(m_cols, 0))
+    : m_rows(rows), m_cols(cols), m_data(m_rows, std::vector<T>(m_cols, T{}))
 {
 }
 
 template <typename T>
-Matrix<T>::Matrix(const std::size_t rows,
-                  const std::size_t cols,
-                  const T &value)
+Matrix<T>::Matrix(const std::size_t rows, const std::size_t cols, const T value)
     : m_rows(rows), m_cols(cols), m_data(m_rows, std::vector<T>(m_cols, value))
 {
 }
 
 template <typename T>
-Matrix<T> Matrix<T>::operator+(const Matrix<T> &rhs)
+Matrix<T> Matrix<T>::operator+(const Matrix<T> &rhs) const
 {
     if (m_rows != rhs.m_rows)
     {
@@ -79,9 +70,9 @@ Matrix<T> Matrix<T>::operator+(const Matrix<T> &rhs)
         throw(std::invalid_argument("Number of cols are not equal!"));
     }
 
-    Matrix<T> result(m_rows, m_cols);
+    auto result = Matrix(m_rows, m_cols);
 
-    for (std::size_t i = 0; i != m_rows; ++i)
+    for (std::size_t i = 0; i < m_rows; ++i)
     {
         std::transform(m_data[i].begin(),
                        m_data[i].end(),
@@ -105,7 +96,7 @@ Matrix<T> &Matrix<T>::operator+=(const Matrix<T> &rhs)
         throw(std::invalid_argument("Number of cols are not equal!"));
     }
 
-    for (std::size_t i = 0; i != m_rows; ++i)
+    for (std::size_t i = 0; i < m_rows; ++i)
     {
         std::transform(m_data[i].begin(),
                        m_data[i].end(),
@@ -118,7 +109,7 @@ Matrix<T> &Matrix<T>::operator+=(const Matrix<T> &rhs)
 }
 
 template <typename T>
-Matrix<T> Matrix<T>::operator-(const Matrix<T> &rhs)
+Matrix<T> Matrix<T>::operator-(const Matrix<T> &rhs) const
 {
     if (m_rows != rhs.m_rows)
     {
@@ -129,9 +120,9 @@ Matrix<T> Matrix<T>::operator-(const Matrix<T> &rhs)
         throw(std::invalid_argument("Number of cols are not equal!"));
     }
 
-    Matrix<T> result(m_rows, m_cols);
+    auto result = Matrix(m_rows, m_cols);
 
-    for (std::size_t i = 0; i != m_rows; ++i)
+    for (std::size_t i = 0; i < m_rows; ++i)
     {
         std::transform(m_data[i].begin(),
                        m_data[i].end(),
@@ -155,7 +146,7 @@ Matrix<T> &Matrix<T>::operator-=(const Matrix<T> &rhs)
         throw(std::invalid_argument("Number of cols are not equal!"));
     }
 
-    for (std::size_t i = 0; i != m_rows; ++i)
+    for (std::size_t i = 0; i < m_rows; ++i)
     {
         std::transform(m_data[i].begin(),
                        m_data[i].end(),
@@ -168,16 +159,16 @@ Matrix<T> &Matrix<T>::operator-=(const Matrix<T> &rhs)
 }
 
 template <typename T>
-Matrix<T> Matrix<T>::operator*(const T &scalar)
+Matrix<T> Matrix<T>::operator*(const T &scalar) const
 {
-    auto result = Matrix<T>(m_rows, m_cols);
+    auto result = Matrix(m_rows, m_cols);
 
-    for (std::size_t i = 0; i != m_rows; ++i)
+    for (std::size_t i = 0; i < m_rows; ++i)
     {
         std::transform(m_data[i].begin(),
                        m_data[i].end(),
                        result.m_data[i].begin(),
-                       [scalar](const T val) -> T { return val * scalar; });
+                       [](const T &val) { return val * scalar; });
     }
 
     return result;
@@ -186,34 +177,33 @@ Matrix<T> Matrix<T>::operator*(const T &scalar)
 template <typename T>
 Matrix<T> &Matrix<T>::operator*=(const T &scalar)
 {
-    for (std::size_t i = 0; i != m_rows; ++i)
+    for (std::size_t i = 0; i < m_rows; ++i)
     {
         std::transform(m_data[i].begin(),
                        m_data[i].end(),
                        m_data[i].begin(),
-                       [scalar](const T val) -> T { return val * scalar; });
+                       [](const T &val) { return val * scalar; });
     }
 
     return *this;
 }
 
 template <typename T>
-Matrix<T> Matrix<T>::operator/(const T &scalar)
+Matrix<T> Matrix<T>::operator/(const T &scalar) const
 {
-    if (scalar == 0)
+    if (scalar == T{})
     {
-        throw(std::overflow_error(
-            "You cannot divide by a scalar value of zero!"));
+        throw(std::invalid_argument("Div by zero!"));
     }
 
-    auto result = Matrix<T>(m_rows, m_cols);
+    auto result = Matrix(m_rows, m_cols);
 
-    for (std::size_t i = 0; i != m_rows; ++i)
+    for (std::size_t i = 0; i < m_rows; ++i)
     {
         std::transform(m_data[i].begin(),
                        m_data[i].end(),
                        result.m_data[i].begin(),
-                       [scalar](const T val) -> T { return val / scalar; });
+                       [](const T &val) { return val / scalar; });
     }
 
     return result;
@@ -222,35 +212,39 @@ Matrix<T> Matrix<T>::operator/(const T &scalar)
 template <typename T>
 Matrix<T> &Matrix<T>::operator/=(const T &scalar)
 {
-    for (std::size_t i = 0; i != m_rows; ++i)
+    if (scalar == T{})
+    {
+        throw(std::invalid_argument("Div by zero!"));
+    }
+
+    for (std::size_t i = 0; i < m_rows; ++i)
     {
         std::transform(m_data[i].begin(),
                        m_data[i].end(),
                        m_data[i].begin(),
-                       [scalar](const T val) -> T { return val / scalar; });
+                       [](const T &val) { return val / scalar; });
     }
 
     return *this;
 }
 
 template <typename T>
-Matrix<T> Matrix<T>::operator*(const Matrix<T> &rhs)
+Matrix<T> Matrix<T>::operator*(const Matrix &rhs) const
 {
     if (m_cols != rhs.m_rows)
     {
-        throw(std::invalid_argument("Matrix dimensions does not match!"));
+        throw(std::invalid_argument("Dimensiosn do not match!"));
     }
 
-    auto result = Matrix<T>(m_rows, rhs.m_cols);
+    auto result = Matrix(m_rows, m_cols);
 
-    for (std::size_t i = 0; i != m_rows; ++i)
+    for (std::size_t i = 0; i != m_cols; ++i)
     {
-        for (std::size_t j = 0; j != rhs.m_cols; ++j)
+        for (std::size_t k = 0; k != rhs.m_rows; ++k)
         {
-            for (std::size_t k = 0; k != rhs.m_rows; ++k)
+            for (std::size_t j = 0; j != rhs.m_cols; ++j)
             {
-                result.m_data[i][j] =
-                    result.m_data[i][j] + m_data[i][k] * rhs.m_data[k][j];
+                result.m_data[i][j] += m_data[i][k] * rhs.m_data[k][j];
             }
         }
     }
@@ -259,11 +253,11 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T> &rhs)
 }
 
 template <typename T>
-Matrix<T> &Matrix<T>::operator*=(const Matrix<T> &rhs)
+Matrix<T> &Matrix<T>::operator*=(const Matrix &rhs)
 {
     if (m_cols != rhs.m_rows)
     {
-        throw(std::invalid_argument("Matrix dimensions does not match!"));
+        throw(std::invalid_argument("Dimensiosn do not match!"));
     }
 
     *this = (*this) * rhs;
@@ -274,17 +268,15 @@ Matrix<T> &Matrix<T>::operator*=(const Matrix<T> &rhs)
 template <typename T>
 void Matrix<T>::print_matrix() const
 {
-    for (std::size_t i = 0; i < m_rows; ++i)
+    for (const auto &row : m_data)
     {
-        for (std::size_t j = 0; j < m_cols; ++j)
+        for (const auto val : row)
         {
-            std::cout << m_data[i][j] << " ";
+            std::cout << val << ", ";
         }
 
-        std::cout << std::endl;
+        std::cout << '\n';
     }
-
-    std::cout << std::endl;
 }
 
 template <typename T>
@@ -298,5 +290,3 @@ std::size_t Matrix<T>::num_cols() const
 {
     return m_cols;
 }
-
-} // namespace cppmath
