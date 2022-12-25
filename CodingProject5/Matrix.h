@@ -42,7 +42,15 @@ public:
     [[nodiscard]] std::size_t num_rows() const;
     [[nodiscard]] std::size_t num_cols() const;
 
+
 private:
+    void dot(const Matrix &matrixA,
+             const Matrix &matrixB,
+             Matrix &result) const;
+    void parallel_dot(const Matrix &matrixA,
+                      const Matrix &matrixB,
+                      Matrix &result) const;
+
     std::size_t m_rows;
     std::size_t m_cols;
     MatrixDataType m_data;
@@ -231,31 +239,73 @@ Matrix<T> &Matrix<T>::operator/=(const T &scalar)
 }
 
 template <std::floating_point T>
-Matrix<T> Matrix<T>::operator*(const Matrix &rhs) const
+Matrix<T> Matrix<T>::operator*(const Matrix<T> &rhs) const
 {
     if (m_cols != rhs.m_rows)
     {
-        throw(std::invalid_argument("Dimensiosn do not match!"));
+        throw(std::invalid_argument("Dimensions do not match!"));
     }
 
     auto result = Matrix(m_rows, m_cols);
 
-    for (std::size_t i = 0; i != m_cols; ++i)
+    if ((m_rows < 250 && m_cols < 250) ||
+        (rhs.m_rows < 250 && rhs.m_cols < 250))
     {
-        for (std::size_t k = 0; k != rhs.m_rows; ++k)
-        {
-            for (std::size_t j = 0; j != rhs.m_cols; ++j)
-            {
-                result.m_data[i][j] += m_data[i][k] * rhs.m_data[k][j];
-            }
-        }
+        dot(*this, rhs, result);
+    }
+    else
+    {
+        parallel_dot(*this, rhs, result);
     }
 
     return result;
 }
 
 template <std::floating_point T>
-Matrix<T> &Matrix<T>::operator*=(const Matrix &rhs)
+void Matrix<T>::dot(const Matrix<T> &matrixA,
+                    const Matrix<T> &matrixB,
+                    Matrix<T> &result) const
+{
+    for (std::size_t i = 0; i != matrixA.m_rows; ++i)
+    {
+        for (std::size_t k = 0; k != matrixB.m_rows; ++k)
+        {
+            for (std::size_t j = 0; j != matrixB.m_cols; ++j)
+            {
+                result.m_data[i][j] =
+                    result.m_data[i][j] +
+                    matrixA.m_data[i][k] * matrixB.m_data[k][j];
+            }
+        }
+    }
+}
+
+template <std::floating_point T>
+void Matrix<T>::parallel_dot(const Matrix<T> &matrixA,
+                             const Matrix<T> &matrixB,
+                             Matrix<T> &result) const
+{
+    std::int32_t i = 0;
+    std::int32_t j = 0;
+    std::int32_t k = 0;
+
+#pragma omp parallel for shared(result) private(i, j, k) num_threads(14)
+    for (i = 0; i < matrixA.m_rows; ++i)
+    {
+        for (k = 0; k < matrixB.m_rows; ++k)
+        {
+            for (j = 0; j < matrixB.m_cols; ++j)
+            {
+                result.m_data[i][j] =
+                    result.m_data[i][j] +
+                    matrixA.m_data[i][k] * matrixB.m_data[k][j];
+            }
+        }
+    }
+}
+
+template <std::floating_point T>
+Matrix<T> &Matrix<T>::operator*=(const Matrix<T> &rhs)
 {
     if (m_cols != rhs.m_rows)
     {
