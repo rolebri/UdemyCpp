@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "console": "externalTerminal",
-      "cwd": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/CodingProject5/Flatten",
-      "program": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/CodingProject5/Flatten/build/Release/outRelease"
+      "cwd": "c:/Users/jan/OneDrive/_Coding/UdemyCpp/CodingProject5/Flatten",
+      "program": "c:/Users/jan/OneDrive/_Coding/UdemyCpp/CodingProject5/Flatten/build/Debug/outDebug"
     }
   ]
 }
