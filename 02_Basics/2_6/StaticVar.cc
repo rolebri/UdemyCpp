@@ -1,23 +1,30 @@
 #include <cstdint>
 #include <iostream>
 
-constexpr static std::uint32_t NUM_PLAYERS2 = 2U;
+constexpr static int VALUE = 2;
 
-void f()
+int func(const int val)
 {
-    static std::uint32_t counter = 0;
+    static int counter = 0;
+    counter++;
 
-    std::cout << "Called f: " << counter << std::endl;
-
-    ++counter;
+    if (counter <= 3)
+    {
+        const int temp = val * 2;
+        return temp / 3;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 int main()
 {
-    f();
-    f();
-    f();
-    f();
+    std::cout << func(VALUE) << '\n';
+    std::cout << func(VALUE) << '\n';
+    std::cout << func(VALUE) << '\n';
+    std::cout << func(VALUE) << '\n';
 
     return 0;
 }

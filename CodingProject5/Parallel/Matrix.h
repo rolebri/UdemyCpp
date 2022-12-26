@@ -246,7 +246,7 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T> &rhs) const
         throw(std::invalid_argument("Dimensions do not match!"));
     }
 
-    auto result = Matrix(m_rows, m_cols);
+    auto result = Matrix(m_rows, rhs.m_cols);
 
     if ((m_rows < 250 && m_cols < 250) ||
         (rhs.m_rows < 250 && rhs.m_cols < 250))

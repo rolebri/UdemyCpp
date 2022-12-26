@@ -27,6 +27,6 @@ times = [
 plt.plot(threads, times)
 plt.bar(threads, times)
 plt.xlabel("#Threads")
-plt.ylabel("Time (ms)")
+plt.ylabel("Time (us)")
 plt.xticks(threads)
 plt.show()

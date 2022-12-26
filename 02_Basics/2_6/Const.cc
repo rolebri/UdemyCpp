@@ -1,14 +1,17 @@
 #include <cstdint>
 #include <iostream>
 
+int func(const int val)
+{
+    const int temp = val * 2;
+
+    return temp / 3;
+}
+
 int main()
 {
-    const std::uint32_t num_players = 2U;
-
-    for (std::uint32_t i = 0; i < num_players; ++i)
-    {
-        std::cout << "Hi\n";
-    }
+    int v = 2;
+    std::cout << func(v) << '\n';
 
     return 0;
 }

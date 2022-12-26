@@ -1,15 +1,18 @@
 #include <cstdint>
 #include <iostream>
 
-const std::uint32_t NUM_PLAYERS1 = 2U;
-constexpr std::uint32_t NUM_PLAYERS2 = 2U;
+constexpr int VALUE = 2;
+
+constexpr int func(const int val)
+{
+    const int temp = val * 2;
+
+    return temp / 3;
+}
 
 int main()
 {
-    for (std::uint32_t i = 0; i < NUM_PLAYERS1; ++i)
-    {
-        std::cout << "Hi\n";
-    }
+    std::cout << func(VALUE) << '\n';
 
     return 0;
 }
