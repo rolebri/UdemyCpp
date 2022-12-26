@@ -1,6 +1,6 @@
+#include <cstdint>
 #include <iostream>
 #include <vector>
-#include <cstdint>
 
 void print_vector(const std::vector<std::int32_t> &vec)
 {

@@ -1,9 +1,9 @@
 #include <array>
 #include <cstdint>
 #include <iostream>
+#include <mutex>
 #include <numeric>
 #include <thread>
-#include <mutex>
 
 #include "Timer.h"
 
@@ -20,7 +20,7 @@ void function(const std::int32_t input, std::int32_t &output)
 {
     output = input * 2;
 
-    auto local_counter  =std::uint32_t{0};
+    auto local_counter = std::uint32_t{0};
     for (std::uint32_t i = 0; i < NUM_INCREMENTS; ++i)
     {
         ++local_counter;
@@ -57,7 +57,8 @@ int main()
 
     for (std::uint32_t i = 0; i < NUM_THREADS; ++i)
     {
-        std::cout << "Input: " << inputs[i] << " and Output: " << outputs[i] << '\n';
+        std::cout << "Input: " << inputs[i] << " and Output: " << outputs[i]
+                  << '\n';
     }
 
     std::cout << "GLOBAL_COUNTER: " << GLOBAL_COUNTER << '\n';

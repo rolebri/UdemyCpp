@@ -1,5 +1,5 @@
-#include <iostream>
 #include <cstdint>
+#include <iostream>
 
 #include "Game.h"
 
@@ -33,7 +33,8 @@ void game()
         }
         else
         {
-            std::cout << "You must enter a number between [0, 10]." << std::endl;
+            std::cout << "You must enter a number between [0, 10]."
+                      << std::endl;
         }
     } while (has_won == false);
 }

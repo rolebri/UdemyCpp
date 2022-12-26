@@ -26,7 +26,8 @@ void print_game_state(const Coordinate &player)
             {
                 std::cout << 'P';
             }
-            else if ((i == GOAL.x && j == GOAL.y) || (i == START.x && j == START.y))
+            else if ((i == GOAL.x && j == GOAL.y) ||
+                     (i == START.x && j == START.y))
             {
                 std::cout << '|';
             }

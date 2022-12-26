@@ -12,9 +12,9 @@ void f(const int &v) // const lvalue &
 
 int main()
 {
-    int a = 2;  // lvalue
-    const int b = 2; // const lvalue
-    int &c = a; // lvalue reference
+    int a = 2;        // lvalue
+    const int b = 2;  // const lvalue
+    int &c = a;       // lvalue reference
     const int &d = b; // const lvalue reference
 
     f(a);

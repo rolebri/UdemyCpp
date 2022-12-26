@@ -22,7 +22,7 @@ void reference_input(const int &v) // Input only because of const
 void reference_in_output(int &v) // Input and Output
 {
     v = v * 2; // In and Output
-    v = 2; // Output only
+    v = 2;     // Output only
     std::cout << "f3: " << v << std::endl;
     std::cout << &v << std::endl;
 }

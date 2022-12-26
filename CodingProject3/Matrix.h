@@ -192,8 +192,7 @@ Matrix<T> Matrix<T>::operator*(const Matrix &rhs) const
         {
             for (std::size_t j = 0; j != rhs.m_cols; ++j)
             {
-                result.m_data[i][j] +=
-                    m_data[i][k] * rhs.m_data[k][j];
+                result.m_data[i][j] += m_data[i][k] * rhs.m_data[k][j];
             }
         }
     }

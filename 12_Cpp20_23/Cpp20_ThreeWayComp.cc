@@ -4,9 +4,7 @@
 class ValueType
 {
 public:
-    constexpr ValueType(const double val) : value{val}
-    {
-    }
+    explicit constexpr ValueType(const double val) : value{val} {};
 
     auto operator<=>(const ValueType &) const = default;
 

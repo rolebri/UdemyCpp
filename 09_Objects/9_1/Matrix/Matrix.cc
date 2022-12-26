@@ -6,7 +6,10 @@ Matrix::Matrix() : m_A(0.0), m_B(0.0), m_C(0.0), m_D(0.0)
 {
 }
 
-Matrix::Matrix(const double &A, const double &B, const double &C, const double &D)
+Matrix::Matrix(const double &A,
+               const double &B,
+               const double &C,
+               const double &D)
     : m_A(A), m_B(B), m_C(C), m_D(D)
 {
 }

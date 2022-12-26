@@ -1,5 +1,5 @@
-#include <iostream>
 #include <cstdint>
+#include <iostream>
 
 /**
  * @brief Computes max of a and b

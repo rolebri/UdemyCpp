@@ -13,7 +13,7 @@ bool is_type(const std::any &a)
 int main()
 {
     auto a = std::any{42}; // integer 42
-    a = 42.0; // double 42.0
+    a = 42.0;              // double 42.0
     a = std::string{"42"}; // std::string "42"
 
     std::cout << "int: " << std::boolalpha << is_type<int>(a) << '\n';

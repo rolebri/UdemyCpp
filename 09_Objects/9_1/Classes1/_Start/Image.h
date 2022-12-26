@@ -1,1 +1,5 @@
 #include <cstdint>
+
+class Image
+{
+};

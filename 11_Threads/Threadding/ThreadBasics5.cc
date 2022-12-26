@@ -1,9 +1,9 @@
 #include <array>
 #include <cstdint>
 #include <iostream>
+#include <mutex>
 #include <numeric>
 #include <thread>
-#include <mutex>
 
 #include "Timer.h"
 
@@ -54,7 +54,8 @@ int main()
 
     for (std::uint32_t i = 0; i < NUM_THREADS; ++i)
     {
-        std::cout << "Input: " << inputs[i] << " and Output: " << outputs[i] << '\n';
+        std::cout << "Input: " << inputs[i] << " and Output: " << outputs[i]
+                  << '\n';
     }
 
     std::cout << "GLOBAL_COUNTER: " << GLOBAL_COUNTER << '\n';

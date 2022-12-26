@@ -20,14 +20,15 @@ int main()
 
     for (std::size_t i = 0; i < data.size(); ++i)
     {
-        std::cout << "Data[" << i << "] = " << static_cast<int>(data[i]) << '\n';
+        std::cout << "Data[" << i << "] = " << static_cast<int>(data[i])
+                  << '\n';
     }
     std::cout << '\n';
 
     for (std::size_t i = 0; i < cipher_text.size(); ++i)
     {
-        std::cout << "Cipher[" << i << "] = " << static_cast<int>(cipher_text[i])
-                  << '\n';
+        std::cout << "Cipher[" << i
+                  << "] = " << static_cast<int>(cipher_text[i]) << '\n';
     }
     std::cout << '\n';
 

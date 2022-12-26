@@ -133,8 +133,9 @@ DynamicArray<T> &DynamicArray<T>::operator=(const DynamicArray<T> &other)
         }
     }
 
-    std::cout << "Copy assignment operator - other.m_length = " << other.m_length
-              << " - this.m_length = " << m_length << std::endl;
+    std::cout << "Copy assignment operator - other.m_length = "
+              << other.m_length << " - this.m_length = " << m_length
+              << std::endl;
 
     return *this;
 }
@@ -147,8 +148,8 @@ DynamicArray<T> &DynamicArray<T>::operator=(const DynamicArray<T> &other)
  */
 template <typename T>
 DynamicArray<T>::DynamicArray(DynamicArray &&other) noexcept
-    : m_length(std::move(other.m_length)), m_capacity(std::move(other.m_capacity)),
-      m_data(std::move(other.m_data))
+    : m_length(std::move(other.m_length)),
+      m_capacity(std::move(other.m_capacity)), m_data(std::move(other.m_data))
 {
     other.m_length = 0;
     other.m_capacity = 0;
@@ -181,8 +182,9 @@ DynamicArray<T> &DynamicArray<T>::operator=(DynamicArray &&other) noexcept
         other.m_data = nullptr;
     }
 
-    std::cout << "Move assignment operator - other.m_length = " << other.m_length
-              << " - this.m_length = " << m_length << std::endl;
+    std::cout << "Move assignment operator - other.m_length = "
+              << other.m_length << " - this.m_length = " << m_length
+              << std::endl;
 
     return *this;
 }

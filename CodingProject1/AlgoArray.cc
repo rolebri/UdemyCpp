@@ -29,7 +29,8 @@ double median(const DynamicArray &dynamic_array)
     {
         const auto index1 = dynamic_array.m_length / 2;
         const auto index2 = (dynamic_array.m_length / 2) - 1;
-        return (dynamic_array.m_data[index1] + dynamic_array.m_data[index2]) / 2.0;
+        return (dynamic_array.m_data[index1] + dynamic_array.m_data[index2]) /
+               2.0;
     }
 
     const auto index = dynamic_array.m_length / 2;

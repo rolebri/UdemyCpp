@@ -30,7 +30,8 @@ void print_game_state(const Coordinate &player,
             {
                 game_state[i][j] = 'P';
             }
-            else if ((i == GOAL.x && j == GOAL.y) || (i == START.x && j == START.y))
+            else if ((i == GOAL.x && j == GOAL.y) ||
+                     (i == START.x && j == START.y))
             {
                 game_state[i][j] = '|';
             }
@@ -47,7 +48,8 @@ void print_game_state(const Coordinate &player,
     }
 }
 
-bool has_obstacle(const Coordinate &coord, const std::vector<Coordinate> &obstacles)
+bool has_obstacle(const Coordinate &coord,
+                  const std::vector<Coordinate> &obstacles)
 {
     for (const auto &obs : obstacles)
     {

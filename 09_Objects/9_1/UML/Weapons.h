@@ -38,7 +38,9 @@ protected:
 class Axe : public Weapon
 {
 public:
-    Axe(const std::string &_name, const float _damage, const float _attack_speed)
+    Axe(const std::string &_name,
+        const float _damage,
+        const float _attack_speed)
         : Weapon(_name, _damage, _attack_speed, true, false){};
     ~Axe() = default;
 
@@ -48,7 +50,9 @@ public:
 class Longbow : public Weapon
 {
 public:
-    Longbow(const std::string &_name, const float _damage, const float _attack_speed)
+    Longbow(const std::string &_name,
+            const float _damage,
+            const float _attack_speed)
         : Weapon(_name, _damage, _attack_speed, false, true){};
     ~Longbow() = default;
 

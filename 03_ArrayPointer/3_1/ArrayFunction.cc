@@ -1,5 +1,5 @@
-#include <iostream>
 #include <cstdint>
+#include <iostream>
 
 void print_array(const std::int32_t arr[], const std::size_t len)
 {

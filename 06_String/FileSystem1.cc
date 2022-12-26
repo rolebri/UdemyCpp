@@ -16,8 +16,10 @@ int main()
     std::cout << chapter_path << std::endl;
     std::cout << current_file_path << std::endl;
 
-    std::cout << "relative_path: " << current_file_path.relative_path() << std::endl;
-    std::cout << "parent_path: " << current_file_path.parent_path() << std::endl;
+    std::cout << "relative_path: " << current_file_path.relative_path()
+              << std::endl;
+    std::cout << "parent_path: " << current_file_path.parent_path()
+              << std::endl;
     std::cout << "filename: " << current_file_path.filename() << std::endl;
     std::cout << "stem: " << current_file_path.stem() << std::endl;
     std::cout << "extension: " << current_file_path.extension() << std::endl;

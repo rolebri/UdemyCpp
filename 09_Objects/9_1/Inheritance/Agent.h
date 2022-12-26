@@ -7,7 +7,8 @@
 class Agent
 {
 public:
-    Agent(const std::string &name, const std::uint32_t id) : m_name(name), m_id(id)
+    Agent(const std::string &name, const std::uint32_t id)
+        : m_name(name), m_id(id)
     {
         std::cout << "Agent Constructor!\n";
     }

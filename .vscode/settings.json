@@ -151,11 +151,11 @@
   "C_Cpp.default.cStandard": "c11",
   "C_Cpp.formatting": "clangFormat",
   "[c]": {
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "editor.defaultFormatter": "ms-vscode.cpptools"
   },
   "[cpp]": {
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "editor.defaultFormatter": "ms-vscode.cpptools"
   },
   "C_Cpp.codeAnalysis.clangTidy.enabled": true,
@@ -225,7 +225,8 @@
     "**/build",
     "**/.*",
     "**/.vscode",
-    "**/html"
+    "**/html",
+    "**/Json"
   ],
   "Workspace_Formatter.includePattern": [
     "*.c",

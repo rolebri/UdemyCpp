@@ -17,7 +17,8 @@ constexpr static auto GOAL = Coordinate{.x = LEN_X - 1, .y = LEN_Y - 1};
 std::int32_t random_int(const std::int32_t lower, const std::int32_t upper)
 {
     static auto gen = std::random_device{};
-    static auto dist = std::uniform_int_distribution<std::int32_t>(lower, upper);
+    static auto dist =
+        std::uniform_int_distribution<std::int32_t>(lower, upper);
 
     return dist(gen);
 }
@@ -25,7 +26,8 @@ std::int32_t random_int(const std::int32_t lower, const std::int32_t upper)
 std::uint32_t random_uint(const std::uint32_t lower, const std::uint32_t upper)
 {
     static auto gen = std::random_device{};
-    static auto dist = std::uniform_int_distribution<std::uint32_t>(lower, upper);
+    static auto dist =
+        std::uniform_int_distribution<std::uint32_t>(lower, upper);
 
     return dist(gen);
 }
@@ -72,7 +74,8 @@ void print_game_state(const Coordinate &player,
             {
                 game_state[i][j] = 'P';
             }
-            else if ((i == GOAL.x && j == GOAL.y) || (i == START.x && j == START.y))
+            else if ((i == GOAL.x && j == GOAL.y) ||
+                     (i == START.x && j == START.y))
             {
                 game_state[i][j] = '|';
             }
@@ -89,7 +92,8 @@ void print_game_state(const Coordinate &player,
     }
 }
 
-bool has_obstacle(const Coordinate &coord, const std::vector<Coordinate> &obstacles)
+bool has_obstacle(const Coordinate &coord,
+                  const std::vector<Coordinate> &obstacles)
 {
     for (const auto &obs : obstacles)
     {

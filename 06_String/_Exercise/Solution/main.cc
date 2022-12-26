@@ -27,8 +27,8 @@ int main()
 
     for (std::size_t i = 0; i < cipher_text.size(); ++i)
     {
-        std::cout << "Cipher[" << i << "] = " << static_cast<int>(cipher_text[i])
-                  << '\n';
+        std::cout << "Cipher[" << i
+                  << "] = " << static_cast<int>(cipher_text[i]) << '\n';
     }
     std::cout << '\n';
 
