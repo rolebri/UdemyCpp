@@ -22,9 +22,9 @@ int main()
 
     for (const auto &val : my_vector)
     {
-        std::cout << val << std::endl;
+        std::cout << val << '\n';
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 
     // Exercise 1
     const auto has_no_even =
@@ -32,22 +32,19 @@ int main()
 
     if (has_no_even)
     {
-        std::cout << "None of the vector values are even" << std::endl;
+        std::cout << "None of the vector values are even" << '\n';
     }
     else
     {
-        std::cout << "The vector has even numbers" << std::endl;
+        std::cout << "The vector has even numbers" << '\n';
     }
 
     // Exercise 2
-    std::transform(my_vector.begin(),
-                   my_vector.end(),
-                   my_result.begin(),
-                   ...);
+    std::transform(my_vector.begin(), my_vector.end(), my_result.begin(), ...);
 
     for (const auto &val : my_result)
     {
-        std::cout << val << std::endl;
+        std::cout << val << '\n';
     }
 
     return 0;

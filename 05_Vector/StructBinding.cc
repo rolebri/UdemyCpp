@@ -14,12 +14,12 @@ int main()
     for (auto [x_, y_] : vec)
     {
         x_ = -1.0F;
-        std::cout << x_ << " " << y_ << std::endl;
+        std::cout << x_ << " " << y_ << '\n';
     }
 
     for (auto &[x_, y_] : vec)
     {
-        std::cout << x_ << " " << y_ << std::endl;
+        std::cout << x_ << " " << y_ << '\n';
     }
 
     return 0;

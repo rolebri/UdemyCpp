@@ -25,7 +25,7 @@ int main()
         p[i] = i;
     }
 
-    std::cout << array_sum(p, array_size) << std::endl;
+    std::cout << array_sum(p, array_size) << '\n';
 
     // Heap De-Allocation
     delete[] p;

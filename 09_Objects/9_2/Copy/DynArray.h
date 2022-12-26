@@ -87,7 +87,7 @@ DynamicArray<T>::DynamicArray(const DynamicArray<T> &other)
     }
 
     std::cout << "Copy constructor - other.m_length = " << other.m_length
-              << " - this.m_length = " << m_length << std::endl;
+              << " - this.m_length = " << m_length << '\n';
 }
 
 /**
@@ -125,8 +125,7 @@ DynamicArray<T> &DynamicArray<T>::operator=(const DynamicArray<T> &other)
     }
 
     std::cout << "Copy assignment operator - other.m_length = "
-              << other.m_length << " - this.m_length = " << m_length
-              << std::endl;
+              << other.m_length << " - this.m_length = " << m_length << '\n';
 
     return *this;
 }

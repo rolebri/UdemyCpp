@@ -21,7 +21,7 @@ int array_maximum(const std::int32_t *array, const std::size_t length)
 
 void print_name(const char *name)
 {
-    std::cout << name << std::endl;
+    std::cout << name << '\n';
 }
 
 int main()
@@ -36,13 +36,13 @@ int main()
         p[i] = static_cast<std::int32_t>(i);
     }
 
-    std::cout << array_maximum(p, array_size) << std::endl;
+    std::cout << array_maximum(p, array_size) << '\n';
 
     // Heap De-Allocation
     delete[] p;
 
     std::int32_t a[array_size] = {4, 5, 6};
-    std::cout << array_maximum(a, array_size) << std::endl;
+    std::cout << array_maximum(a, array_size) << '\n';
 
     const char name[]{"Jan Schaffranek"};
     print_name(name);

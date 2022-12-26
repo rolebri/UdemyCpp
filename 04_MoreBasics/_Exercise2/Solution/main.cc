@@ -4,13 +4,13 @@
 
 int main()
 {
-    PlayerData p1 = PlayerData{.id = 0,
+    const auto p1 = PlayerData{.id = 0,
                                .x_pos = 10.0F,
                                .y_pos = 1.0F,
                                .health = 100,
                                .energy = 50,
                                .alliance = Alliance::ALLIED};
-    PlayerData p2 = PlayerData{.id = 0,
+    const auto p2 = PlayerData{.id = 0,
                                .x_pos = 12.0F,
                                .y_pos = 6.0F,
                                .health = 80,

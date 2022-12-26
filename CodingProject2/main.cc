@@ -6,8 +6,8 @@
 
 int main()
 {
-    double fill_value = 1.0;
-    std::size_t length = 0;
+    const double fill_value = 1.0;
+    const std::size_t length = 0;
 
     DynamicArray<double> my_array(fill_value, length);
 
@@ -19,20 +19,20 @@ int main()
 
     for (std::size_t i = 0; i < my_array.get_length(); ++i)
     {
-        std::cout << my_array[i] << std::endl;
+        std::cout << my_array[i] << '\n';
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 
     // my_array.pop_back();
     // my_array.pop_back();
 
     for (std::size_t i = 0; i < my_array.get_length(); ++i)
     {
-        std::cout << my_array[i] << std::endl;
+        std::cout << my_array[i] << '\n';
     }
 
-    std::cout << "Mean = " << mean(my_array) << std::endl;
-    std::cout << "Median = " << median(my_array) << std::endl;
+    std::cout << "Mean = " << mean(my_array) << '\n';
+    std::cout << "Median = " << median(my_array) << '\n';
 
     return 0;
 }

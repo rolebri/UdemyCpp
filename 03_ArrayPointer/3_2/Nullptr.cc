@@ -7,8 +7,8 @@ int main()
 
     if (p != nullptr)
     {
-        std::cout << p << std::endl;
-        std::cout << *p << std::endl;
+        std::cout << p << '\n';
+        std::cout << *p << '\n';
     }
     else
     {

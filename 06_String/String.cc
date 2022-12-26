@@ -3,7 +3,7 @@
 
 int main()
 {
-    std::string s = "Hello people!";
+    const std::string s = "Hello people!";
     std::cout << s << '\n';
 
     const auto index = s.find("Hallo");

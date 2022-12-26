@@ -13,7 +13,7 @@ int main()
     {
         for (std::size_t j = 0; j < 2; j++)
         {
-            std::cout << my_matrix2[i][j] << std::endl;
+            std::cout << my_matrix2[i][j] << '\n';
         }
     }
 
@@ -27,7 +27,7 @@ int main()
     {
         for (const auto val : row)
         {
-            std::cout << val << std::endl;
+            std::cout << val << '\n';
         }
     }
 

@@ -33,7 +33,7 @@ int main()
         total_time += t.elapsed_time<microsecs, double>();
     }
 
-    std::cout << "Mean time: " << total_time / NUM_RUNS << " us" << std::endl;
+    std::cout << "Mean time: " << total_time / NUM_RUNS << " us" << '\n';
 
     return 0;
 }

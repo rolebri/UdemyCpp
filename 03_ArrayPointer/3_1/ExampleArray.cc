@@ -19,7 +19,7 @@ int main()
     {
         std::cout << array2[i] << " ";
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 
     return 0;
 }

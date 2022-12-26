@@ -17,7 +17,7 @@ int main()
 
     for (std::size_t i = 0; i < array_size; i++)
     {
-        std::cout << arr[i] << std::endl;
+        std::cout << arr[i] << '\n';
     }
 
     // Heap De-Allocation

@@ -3,15 +3,14 @@
 
 void print_vector_info(const std::vector<int> &my_vector)
 {
-    std::cout << "Size: " << my_vector.size() << std::endl;
-    std::cout << "Capacity: " << my_vector.capacity() << std::endl;
-    std::cout << "Empty?: " << std::boolalpha << my_vector.empty() << std::endl
-              << std::endl;
+    std::cout << "Size: " << my_vector.size() << '\n';
+    std::cout << "Capacity: " << my_vector.capacity() << '\n';
+    std::cout << "Empty?: " << std::boolalpha << my_vector.empty() << "\n\n";
 }
 
 int main()
 {
-    std::vector<int> my_vector(10, 0);
+    auto my_vector = std::vector<std::int32_t>(10, 0);
 
     print_vector_info(my_vector);
 

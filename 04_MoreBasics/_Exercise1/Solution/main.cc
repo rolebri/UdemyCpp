@@ -15,13 +15,13 @@ int main()
     double mean_array_b =
         computation::mean_array_value(array_b, array_elements);
 
-    std::cout << "Mean Array A: " << mean_array_a << std::endl;
-    std::cout << "Mean Array B: " << mean_array_b << std::endl;
+    std::cout << "Mean Array A: " << mean_array_a << '\n';
+    std::cout << "Mean Array B: " << mean_array_b << '\n';
 
     // Exercise 2
     computation::Dataset data{mean_array_a, mean_array_b};
-    std::cout << data.mean_array_a << std::endl;
-    std::cout << data.mean_array_b << std::endl;
+    std::cout << data.mean_array_a << '\n';
+    std::cout << data.mean_array_b << '\n';
 
     return 0;
 }

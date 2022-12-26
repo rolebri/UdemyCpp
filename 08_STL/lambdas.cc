@@ -13,7 +13,7 @@ public:
         return n > 0;
     }
 };
-auto l = [](const auto n){ return n > 0; };
+auto l = [](const auto n) { return n > 0; };
 
 template <typename T>
 class _lambda2
@@ -67,7 +67,7 @@ int main()
 
     const auto N = 3;
     //                Cap. List, Param List, Function Body
-    auto filter = [N](const auto value) {return (value % N) == 0;};
+    auto filter = [N](const auto value) { return (value % N) == 0; };
 
     for (const auto val : my_vector)
     {

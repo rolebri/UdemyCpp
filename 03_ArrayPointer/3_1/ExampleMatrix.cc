@@ -21,8 +21,7 @@ int main()
 
     for (std::uint32_t j = 0; j < num_cols; ++j)
     {
-        std::cout << "Sum at column " << j << " = " << column_sums[j]
-                  << std::endl;
+        std::cout << "Sum at column " << j << " = " << column_sums[j] << '\n';
     }
 
     return 0;

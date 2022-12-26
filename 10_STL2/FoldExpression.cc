@@ -9,12 +9,12 @@ T concat(Args... args)
 
 int main()
 {
-    std::string s1 = "Ha";
-    std::string s2 = "ll";
-    std::string s3 = "o";
+    const auto s1 = std::string{"Ha"};
+    const auto s2 = std::string{"ll"};
+    const auto s3 = std::string{"o"};
 
-    std::cout << concat<std::string>(s1, s2, s3) << std::endl;
-    std::cout << concat<int>(1, 2, 3) << std::endl;
+    std::cout << concat<std::string>(s1, s2, s3) << '\n';
+    std::cout << concat<int>(1, 2, 3) << '\n';
 
     return 0;
 }

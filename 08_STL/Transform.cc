@@ -43,10 +43,16 @@ int main()
     std::generate(my_vector.begin(), my_vector.end(), gen);
     print_vector(my_vector);
 
-    std::transform(my_vector.begin(), my_vector.end(), my_vector.begin(), func1);
+    std::transform(my_vector.begin(),
+                   my_vector.end(),
+                   my_vector.begin(),
+                   func1);
     print_vector(my_vector);
 
-    std::transform(my_vector.begin(), my_vector.end(), my_vector.begin(), func2);
+    std::transform(my_vector.begin(),
+                   my_vector.end(),
+                   my_vector.begin(),
+                   func2);
     print_vector(my_vector);
 
     return 0;

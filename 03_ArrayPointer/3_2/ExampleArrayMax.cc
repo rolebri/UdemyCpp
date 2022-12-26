@@ -24,7 +24,7 @@ int main()
     const auto length = std::uint32_t{5};
     const int array[]{1, 2, 34, 100, -22};
 
-    std::cout << array_maximum(array, length) << std::endl;
+    std::cout << array_maximum(array, length) << '\n';
 
     return 0;
 }

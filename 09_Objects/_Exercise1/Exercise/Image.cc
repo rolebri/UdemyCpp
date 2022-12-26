@@ -38,7 +38,8 @@ void Image::save_image(const char *file_name) const
     }
 
     auto bmpfileheader =
-        std::array<std::uint8_t, 14>{'B', 'M', 0, 0, 0, 0, 0, 0, 0, 0, 54, 0, 0, 0};
+        std::array<std::uint8_t,
+                   14>{'B', 'M', 0, 0, 0, 0, 0, 0, 0, 0, 54, 0, 0, 0};
     auto bmpinfoheader =
         std::array<std::uint8_t,
                    40>{40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 24, 0};

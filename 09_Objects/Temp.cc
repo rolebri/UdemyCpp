@@ -20,8 +20,10 @@ void Image::save_image(const char *file_name) const
         }
     }
 
-    std::uint8_t bmpfileheader[14]{'B', 'M', 0, 0, 0, 0, 0, 0, 0, 0, 54, 0, 0, 0};
-    std::uint8_t bmpinfoheader[40]{40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 24, 0};
+    std::uint8_t
+        bmpfileheader[14]{'B', 'M', 0, 0, 0, 0, 0, 0, 0, 0, 54, 0, 0, 0};
+    std::uint8_t
+        bmpinfoheader[40]{40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 24, 0};
     std::uint8_t bmppad[3]{0, 0, 0};
 
     bmpfileheader[2] = static_cast<std::uint8_t>(filesize);

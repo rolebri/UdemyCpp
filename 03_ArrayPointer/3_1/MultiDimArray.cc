@@ -15,7 +15,7 @@ int main()
     {
         for (int j = 0; j < 2; j++)
         {
-            std::cout << my_matrix2[i][j] << std::endl;
+            std::cout << my_matrix2[i][j] << '\n';
         }
     }
 

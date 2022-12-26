@@ -5,7 +5,7 @@ namespace fs = std::filesystem;
 
 int main()
 {
-    fs::path current_path = fs::current_path();
+    const fs::path current_path = fs::current_path();
     fs::path current_file_path = fs::current_path();
     current_file_path /= "FileSystem2.cc";
 
@@ -13,7 +13,7 @@ int main()
          it != fs::directory_iterator{};
          ++it)
     {
-        std::cout << *it << std::endl;
+        std::cout << *it << '\n';
     }
 
     fs::path new_directory_path;

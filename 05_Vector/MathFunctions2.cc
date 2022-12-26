@@ -23,10 +23,10 @@ void print_vector(const std::vector<T> &vec)
 {
     for (int i = 0; const auto &value : vec)
     {
-        std::cout << "Vec[" << i << "] = " << value << std::endl;
+        std::cout << "Vec[" << i << "] = " << value << '\n';
         i++;
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 }
 
 int main()

@@ -7,7 +7,7 @@
 
 void f(const int &v) // const lvalue &
 {
-    std::cout << v << std::endl;
+    std::cout << v << '\n';
 }
 
 int main()

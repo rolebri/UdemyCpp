@@ -38,7 +38,8 @@ void Image::save_image(const char *file_name) const
     }
 
     auto bmpfileheader =
-        std::array<std::uint8_t, 14>{'B', 'M', 0, 0, 0, 0, 0, 0, 0, 0, 54, 0, 0, 0};
+        std::array<std::uint8_t,
+                   14>{'B', 'M', 0, 0, 0, 0, 0, 0, 0, 0, 54, 0, 0, 0};
     auto bmpinfoheader =
         std::array<std::uint8_t,
                    40>{40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 24, 0};
@@ -154,21 +155,21 @@ void Image::draw_line(const std::uint32_t x1,
 {
     int length = 0;
 
-    if ((x1 < m_width) && (x2 < m_width) && (y1 < m_height) && (y2 < m_height) &&
-        ((x1 == x2) || (y1 == y2)))
+    if ((x1 < m_width) && (x2 < m_width) && (y1 < m_height) &&
+        (y2 < m_height) && ((x1 == x2) || (y1 == y2)))
     {
-        std::cout << "Draw line!" << std::endl;
-        std::cout << x1 << " " << y1 << " " << x2 << " " << y2 << " " << std::endl;
+        std::cout << "Draw line!" << '\n';
+        std::cout << x1 << " " << y1 << " " << x2 << " " << y2 << " " << '\n';
 
         // Draw vertical line
         if (x1 == x2)
         {
-            std::cout << "Same x!" << std::endl;
+            std::cout << "Same x!" << '\n';
 
             if (y1 < y2)
             {
                 length = y2 - y1;
-                std::cout << "With length: " << length + 1 << std::endl;
+                std::cout << "With length: " << length + 1 << '\n';
 
                 for (int i = 0; i != length; ++i)
                 {
@@ -178,7 +179,7 @@ void Image::draw_line(const std::uint32_t x1,
             else
             {
                 length = y1 - y2;
-                std::cout << "With length: " << length + 1 << std::endl;
+                std::cout << "With length: " << length + 1 << '\n';
 
                 for (int i = 0; i != length; ++i)
                 {
@@ -189,12 +190,12 @@ void Image::draw_line(const std::uint32_t x1,
         // Draw horizontal line
         else if (y1 == y2)
         {
-            std::cout << "Same y!" << std::endl;
+            std::cout << "Same y!" << '\n';
 
             if (x1 < x2)
             {
                 length = x2 - x1;
-                std::cout << "With length: " << length + 1 << std::endl;
+                std::cout << "With length: " << length + 1 << '\n';
 
                 for (int i = 0; i != length; ++i)
                 {
@@ -204,7 +205,7 @@ void Image::draw_line(const std::uint32_t x1,
             else
             {
                 length = x1 - x2;
-                std::cout << "With length: " << length + 1 << std::endl;
+                std::cout << "With length: " << length + 1 << '\n';
 
                 for (int i = 0; i != length; ++i)
                 {
@@ -215,7 +216,7 @@ void Image::draw_line(const std::uint32_t x1,
     }
     else
     {
-        std::cout << "Line Error" << std::endl;
-        std::cout << x1 << " " << y1 << " " << x2 << " " << y2 << " " << std::endl;
+        std::cout << "Line Error" << '\n';
+        std::cout << x1 << " " << y1 << " " << x2 << " " << y2 << " " << '\n';
     }
 }

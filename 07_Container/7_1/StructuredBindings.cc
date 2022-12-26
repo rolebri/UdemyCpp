@@ -17,17 +17,17 @@ std::tuple<int, std::string, double> get_data()
 
 int main()
 {
-    int a;
-    std::string b;
-    double c;
+    int a = 0;
+    std::string b = "";
+    double c = 0.0;
 
     get_data_old(a, b, c);
-    std::cout << a << std::endl;
-    std::cout << b << std::endl;
-    std::cout << c << std::endl;
+    std::cout << a << '\n';
+    std::cout << b << '\n';
+    std::cout << c << '\n';
 
     const auto [id, name, score] = get_data();
-    std::cout << id << std::endl;
-    std::cout << name << std::endl;
-    std::cout << score << std::endl;
+    std::cout << id << '\n';
+    std::cout << name << '\n';
+    std::cout << score << '\n';
 }

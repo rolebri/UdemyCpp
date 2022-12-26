@@ -17,24 +17,24 @@ struct Vehicle
 
 void print_vehicle_data(const Vehicle &vehicle)
 {
-    std::cout << "Vehicle ID: " << vehicle.id << std::endl;
-    std::cout << "Vehicle Velocity [kph]: " << vehicle.velocity << std::endl;
+    std::cout << "Vehicle ID: " << vehicle.id << '\n';
+    std::cout << "Vehicle Velocity [kph]: " << vehicle.velocity << '\n';
 
     switch (vehicle.lane)
     {
     case Lane::CENTER_LANE:
     {
-        std::cout << "Vehicle Lane Association: Center Lane" << std::endl;
+        std::cout << "Vehicle Lane Association: Center Lane" << '\n';
         break;
     }
     case Lane::RIGHT_LANE:
     {
-        std::cout << "Vehicle Lane Association: Right Lane" << std::endl;
+        std::cout << "Vehicle Lane Association: Right Lane" << '\n';
         break;
     }
     case Lane::LEFT_LANE:
     {
-        std::cout << "Vehicle Lane Association: Left Lane" << std::endl;
+        std::cout << "Vehicle Lane Association: Left Lane" << '\n';
         break;
     }
     default:
@@ -46,24 +46,24 @@ void print_vehicle_data(const Vehicle &vehicle)
 
 void print_vehicle_data_pointer(const Vehicle *vehicle)
 {
-    std::cout << "Vehicle ID: " << vehicle->id << std::endl;
-    std::cout << "Vehicle Velocity [kph]: " << vehicle->velocity << std::endl;
+    std::cout << "Vehicle ID: " << vehicle->id << '\n';
+    std::cout << "Vehicle Velocity [kph]: " << vehicle->velocity << '\n';
 
     switch (vehicle->lane)
     {
     case Lane::CENTER_LANE:
     {
-        std::cout << "Vehicle Lane Association: Center Lane" << std::endl;
+        std::cout << "Vehicle Lane Association: Center Lane" << '\n';
         break;
     }
     case Lane::RIGHT_LANE:
     {
-        std::cout << "Vehicle Lane Association: Right Lane" << std::endl;
+        std::cout << "Vehicle Lane Association: Right Lane" << '\n';
         break;
     }
     case Lane::LEFT_LANE:
     {
-        std::cout << "Vehicle Lane Association: Left Lane" << std::endl;
+        std::cout << "Vehicle Lane Association: Left Lane" << '\n';
         break;
     }
     default:

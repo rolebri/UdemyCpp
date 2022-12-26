@@ -24,7 +24,8 @@ public:
     // Exercise 1
     void clear_image();
     // Exercise 2
-    void resize_image(const std::uint32_t new_width, const std::uint32_t new_height);
+    void resize_image(const std::uint32_t new_width,
+                      const std::uint32_t new_height);
     // Exercise 3
     void fill_image(const std::uint8_t value);
     // Exercise 4

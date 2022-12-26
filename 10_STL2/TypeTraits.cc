@@ -54,14 +54,14 @@ T max(const T &a, const T &b)
 
 int main()
 {
-    std::cout << max(10, 11) << std::endl;
-    std::cout << max(10.0F, 11.0F) << std::endl;
-    std::cout << max(10.0, 11.0) << std::endl;
-    // std::cout << max<short>(10, 11) << std::endl;
+    std::cout << max(10, 11) << '\n';
+    std::cout << max(10.0F, 11.0F) << '\n';
+    std::cout << max(10.0, 11.0) << '\n';
+    // std::cout << max<short>(10, 11) << '\n';
 
-    // std::cout << max<short, short>(10, 11) << std::endl;
-    // std::cout << max<short, int>(10, 11) << std::endl;
-    // std::cout << max<int, short>(10, 11) << std::endl;
+    // std::cout << max<short, short>(10, 11) << '\n';
+    // std::cout << max<short, int>(10, 11) << '\n';
+    // std::cout << max<int, short>(10, 11) << '\n';
 
     return 0;
 }

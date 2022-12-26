@@ -13,25 +13,25 @@ int main()
     {
         std::cout << val << " ";
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 
     for (auto &val : vec)
     {
         std::cout << val << " ";
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 
     for (const auto val : vec)
     {
         std::cout << val << " ";
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 
     for (const auto &val : vec)
     {
         std::cout << val << " ";
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 
     return 0;
 }

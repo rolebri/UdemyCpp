@@ -10,7 +10,7 @@ int main()
 
     for (auto v : numbers)
         std::cout << v << " ";
-    std::cout << std::endl;
+    std::cout << '\n';
 
     auto results1 = numbers |
                     std::views::transform([](const auto n) { return n * 3; }) |
@@ -18,7 +18,7 @@ int main()
 
     for (auto v : results1)
         std::cout << v << " ";
-    std::cout << std::endl;
+    std::cout << '\n';
 
     auto results2 = std::views::reverse(numbers) | std::views::drop(2) |
                     std::views::take(3) |
@@ -27,7 +27,7 @@ int main()
 
     for (auto v : results2)
         std::cout << v << " ";
-    std::cout << std::endl;
+    std::cout << '\n';
 
     return 0;
 }

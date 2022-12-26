@@ -16,8 +16,8 @@ int main()
         my_array.m_data[i] = static_cast<double>(i);
     }
 
-    std::cout << "Mean = " << mean(my_array) << std::endl;
-    std::cout << "Median = " << median(my_array) << std::endl;
+    std::cout << "Mean = " << mean(my_array) << '\n';
+    std::cout << "Median = " << median(my_array) << '\n';
 
     return 0;
 }

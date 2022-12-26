@@ -13,10 +13,10 @@ int main()
     my_data[1] = 1;
     my_data[2] = 2; // int main()
 
-    std::cout << "Start-values of the array: " << std::endl;
+    std::cout << "Start-values of the array: " << '\n';
     for (std::size_t i = 0; i < size; i++)
     {
-        std::cout << my_data[i] << std::endl;
+        std::cout << my_data[i] << '\n';
     }
 
     // Exercise 1
@@ -24,20 +24,20 @@ int main()
     push_back(my_data, size, 12);
     size++;
 
-    std::cout << "Append value 12 at the end: " << std::endl;
+    std::cout << "Append value 12 at the end: " << '\n';
     for (std::size_t i = 0; i < size; i++)
     {
-        std::cout << my_data[i] << std::endl;
+        std::cout << my_data[i] << '\n';
     }
 
     // Exercise 2
     pop_back(my_data, size);
     size--;
 
-    std::cout << "Remove the last value: " << std::endl;
+    std::cout << "Remove the last value: " << '\n';
     for (std::size_t i = 0; i < size; i++)
     {
-        std::cout << my_data[i] << std::endl;
+        std::cout << my_data[i] << '\n';
     }
 
     delete[] my_data;

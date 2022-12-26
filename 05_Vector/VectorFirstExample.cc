@@ -8,7 +8,7 @@ void print_vector(const std::vector<std::int32_t> &vec)
     {
         std::cout << vec[i] << ", ";
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 }
 
 int main()

@@ -64,7 +64,7 @@ void f3()
     if (!t4->m_partner.expired())
     {
         auto t4_partner_shard = t4->m_partner.lock();
-        std::cout << t4_partner_shard->m_val << std::endl;
+        std::cout << t4_partner_shard->m_val << '\n';
         std::cout << "Count t5: " << t5.use_count() << '\n';
     }
 }

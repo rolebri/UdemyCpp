@@ -21,40 +21,44 @@ int main()
 
     for (std::size_t i = 0; i < target.size(); ++i)
     {
-        std::cout << "Target[" << i << "] = " << target[i] << std::endl;
+        std::cout << "Target[" << i << "] = " << target[i] << '\n';
     }
     for (std::size_t i = 0; i < input.size(); ++i)
     {
-        std::cout << "Input[" << i << "] = " << input[i] << std::endl;
+        std::cout << "Input[" << i << "] = " << input[i] << '\n';
     }
 
     ////// START EXERCISES
 
     // Exercise 1
-    std::cout << std::endl << "Starting exercise 1";
+    std::cout << '\n' << "Starting exercise 1";
     auto start = std::chrono::high_resolution_clock::now();
     const auto result_exercise1 = shuffle_till_equal(target, input);
     auto end = std::chrono::high_resolution_clock::now();
     auto elapsed_milliseconds =
-        std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() /
+        std::chrono::duration_cast<std::chrono::microseconds>(end - start)
+            .count() /
         1000.0;
-    std::cout << std::endl << "Time for exercise 1 in ms: " << elapsed_milliseconds;
-    const auto is_equal2 =
-        std::equal(result_exercise1.begin(), result_exercise1.end(), target.begin());
-    std::cout << std::endl << "Vectors are equal: " << is_equal2 << std::endl;
+    std::cout << '\n' << "Time for exercise 1 in ms: " << elapsed_milliseconds;
+    const auto is_equal2 = std::equal(result_exercise1.begin(),
+                                      result_exercise1.end(),
+                                      target.begin());
+    std::cout << '\n' << "Vectors are equal: " << is_equal2 << '\n';
 
     // Exercise 2
-    std::cout << std::endl << "Starting exercise 2";
+    std::cout << '\n' << "Starting exercise 2";
     start = std::chrono::high_resolution_clock::now();
     const auto result_exercise2 = smart_shuffle_till_equal(target, input);
     end = std::chrono::high_resolution_clock::now();
     elapsed_milliseconds =
-        std::chrono::duration_cast<std::chrono::microseconds>(end - start).count() /
+        std::chrono::duration_cast<std::chrono::microseconds>(end - start)
+            .count() /
         1000.0;
-    std::cout << std::endl << "Time for exercise 2 in ms: " << elapsed_milliseconds;
-    const auto is_equal3 =
-        std::equal(result_exercise2.begin(), result_exercise2.end(), target.begin());
-    std::cout << std::endl << "Vectors are equal: " << is_equal3 << std::endl;
+    std::cout << '\n' << "Time for exercise 2 in ms: " << elapsed_milliseconds;
+    const auto is_equal3 = std::equal(result_exercise2.begin(),
+                                      result_exercise2.end(),
+                                      target.begin());
+    std::cout << '\n' << "Vectors are equal: " << is_equal3 << '\n';
 
     return 0;
 }

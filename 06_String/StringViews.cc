@@ -4,18 +4,18 @@
 
 void *operator new(std::size_t count)
 {
-    std::cout << "allocating" << std::endl;
+    std::cout << "allocating" << '\n';
     return malloc(count);
 }
 
 void do_something1(const std::string &s)
 {
-    std::cout << s << std::endl;
+    std::cout << s << '\n';
 }
 
 void do_something2(std::string_view sv)
 {
-    std::cout << sv << std::endl;
+    std::cout << sv << '\n';
 }
 
 int main()

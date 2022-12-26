@@ -26,13 +26,13 @@ auto max2(const T &a, const U &b)
 
 int main()
 {
-    std::cout << max1(10, 11) << std::endl;
-    std::cout << max1(10.0F, 11.0F) << std::endl;
-    std::cout << max1(10.0, 11.0) << std::endl;
+    std::cout << max1(10, 11) << '\n';
+    std::cout << max1(10.0F, 11.0F) << '\n';
+    std::cout << max1(10.0, 11.0) << '\n';
 
-    std::cout << max2(10, 11) << std::endl;
-    std::cout << max2(10.0F, 11.0F) << std::endl;
-    std::cout << max2(10.0, 11.0) << std::endl;
+    std::cout << max2(10, 11) << '\n';
+    std::cout << max2(10.0F, 11.0F) << '\n';
+    std::cout << max2(10.0, 11.0) << '\n';
 
     return 0;
 }

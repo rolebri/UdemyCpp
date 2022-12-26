@@ -16,10 +16,10 @@ int main()
 
     *p_e = *p_d + *p_f;
 
-    std::cout << a << std::endl;
-    std::cout << *p_d << std::endl;
-    std::cout << *p_e << std::endl;
-    std::cout << *p_f << std::endl;
+    std::cout << a << '\n';
+    std::cout << *p_d << '\n';
+    std::cout << *p_e << '\n';
+    std::cout << *p_f << '\n';
 
     return 0;
 }

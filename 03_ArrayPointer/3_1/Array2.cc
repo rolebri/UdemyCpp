@@ -12,13 +12,13 @@ int main()
     {
         std::cout << vector1[i] << " ";
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 
     for (std::uint32_t i = 0; i < len; ++i)
     {
         std::cout << vector2[i] << " ";
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 
     std::cout << "Enter the values for vector 1: \n";
     for (std::uint32_t i = 0; i < len; ++i)
@@ -34,7 +34,7 @@ int main()
 
     for (std::uint32_t i = 0; i < len; ++i)
     {
-        std::cout << "v1[i] + v2[i] = " << vector1[i] + vector2[i] << std::endl;
+        std::cout << "v1[i] + v2[i] = " << vector1[i] + vector2[i] << '\n';
     }
 
     return 0;

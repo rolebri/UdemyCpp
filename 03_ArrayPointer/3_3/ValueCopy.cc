@@ -2,13 +2,13 @@
 
 void f(int v)
 {
-    std::cout << &v << std::endl;
+    std::cout << &v << '\n';
 }
 
 int main()
 {
     int a = 2;
-    std::cout << &a << std::endl;
+    std::cout << &a << '\n';
 
     f(a);
 
