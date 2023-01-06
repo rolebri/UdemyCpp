@@ -25,7 +25,7 @@ std::vector<bool> shuffle_till_equal(const BinaryArray &target,
 
         std::shuffle(input.begin(),
                      input.end(),
-                     std::default_random_engine(42));
+                     std::default_random_engine{42});
 
         if (std::equal(input.begin(), input.end(), target.begin()))
         {
@@ -40,29 +40,27 @@ std::vector<bool> shuffle_till_equal(const BinaryArray &target,
 std::vector<bool> smart_shuffle_till_equal(const BinaryArray &target,
                                            BinaryArray input)
 {
-    auto equal = false;
     auto iteration = 1U;
 
     auto first = input.begin();
     auto last = input.end();
 
-    while (!equal)
+    while (true)
     {
         if (iteration % 100000 == 0)
         {
             std::cout << '\n' << "Iteration: " << iteration;
         }
-        ++iteration;
 
-        std::shuffle(first, last, std::default_random_engine(42));
-
-        const auto index = std::distance(input.begin(), first);
-
-        if (*first == target[index])
+        while (first != last &&
+               *first == target[std::distance(input.begin(), first)])
             ++first;
 
         if (first == last)
-            equal = true;
+            break;
+
+        std::shuffle(first, last, std::default_random_engine{42});
+        ++iteration;
     }
 
     return input;

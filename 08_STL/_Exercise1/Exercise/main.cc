@@ -8,6 +8,8 @@
 
 #include "exercise.h"
 
+using ClockType = std::chrono::steady_clock;
+
 int main()
 {
     auto gen = std::random_device{};
@@ -17,7 +19,7 @@ int main()
     std::generate(target.begin(), target.end(), [&] { return dist(gen); });
 
     auto input = BinaryArray(target.begin(), target.end());
-    std::shuffle(input.begin(), input.end(), std::default_random_engine(42));
+    std::shuffle(input.begin(), input.end(), std::default_random_engine{42});
 
     for (std::size_t i = 0; i < target.size(); ++i)
     {
@@ -32,9 +34,9 @@ int main()
 
     // Exercise 1
     std::cout << '\n' << "Starting exercise 1";
-    auto start = std::chrono::high_resolution_clock::now();
+    auto start = ClockType::now();
     const auto result_exercise1 = shuffle_till_equal(target, input);
-    auto end = std::chrono::high_resolution_clock::now();
+    auto end = ClockType::now();
     auto elapsed_milliseconds =
         std::chrono::duration_cast<std::chrono::microseconds>(end - start)
             .count() /
@@ -47,9 +49,9 @@ int main()
 
     // Exercise 2
     std::cout << '\n' << "Starting exercise 2";
-    start = std::chrono::high_resolution_clock::now();
+    start = ClockType::now();
     const auto result_exercise2 = smart_shuffle_till_equal(target, input);
-    end = std::chrono::high_resolution_clock::now();
+    end = ClockType::now();
     elapsed_milliseconds =
         std::chrono::duration_cast<std::chrono::microseconds>(end - start)
             .count() /
