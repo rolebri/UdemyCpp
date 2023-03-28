@@ -13,7 +13,7 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.bracketPairColorization.enabled": false,
-  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorSmoothCaretAnimation": "on",
   "terminal.integrated.defaultProfile.windows": "Command Prompt",
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "debug.onTaskErrors": "debugAnyway",
@@ -274,5 +274,6 @@
     "**/.*/**",
     "**/.vscode",
     "**/.vscode/**"
-  ]
+  ],
+  "C_Cpp_Runner.useAddressSanitizer": false
 }
