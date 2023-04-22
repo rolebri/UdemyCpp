@@ -5,7 +5,7 @@ int main()
     float my_value1;
     float my_value2;
 
-    std::cout << "Please enter the first number: ";
+    std::cout << "Please rolebri, enter the first number: ";
     std::cin >> my_value1;
 
     std::cout << "Please enter the second number: ";
