@@ -3,13 +3,11 @@
   "configurations": [
     {
       "name": "C/C++ Runner: Debug Session",
-      "type": "cppvsdbg",
+      "type": "lldb",
       "request": "launch",
       "args": [],
-      "stopAtEntry": false,
-      "console": "externalTerminal",
-      "cwd": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp",
-      "program": "c:/Users/Jan/OneDrive/_Coding/UdemyCpp/build/Debug/outDebug"
+      "cwd": "/Users/rolandimac/Documents/Programmierung/Udemy/UdemyCpp",
+      "program": "/Users/rolandimac/Documents/Programmierung/Udemy/UdemyCpp/build/Debug/outDebug"
     }
   ]
 }
